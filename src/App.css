@@ -1,0 +1,18 @@
+.wrapper{
+  width: 100%!important;
+  display: flex!important;
+  align-items: center!important;
+  justify-content: center!important;
+}
+.light-body-bg {
+    background-color: var(--white);
+    /* color: var(--dark-green); */
+  }
+  .light-text {
+    color: var(--dark-green)!important;
+  }
+ .light-cards-bg{
+  background-color: var(--white-2)!important;
+ } 
+
+ 

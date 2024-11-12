@@ -1,0 +1,31 @@
+.hero-wrapper {
+  width: 100%;
+  background-color: var(--dark-green);
+  min-height: 600px;
+  padding: 5rem 3.5%;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+  
+}
+.pattern-img{
+    position: absolute;
+    z-index: -1;
+    width: 55rem;
+    opacity: 0.08;
+    transform: rotate(90deg);
+
+
+}
+.top{
+    left: -30rem;
+    top: -15rem;
+    transform: rotate(180deg);
+
+
+}
+.bottom{
+    bottom: -12rem;
+    right: -30rem;
+
+}

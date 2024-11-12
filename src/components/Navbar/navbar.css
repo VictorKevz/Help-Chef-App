@@ -1,0 +1,145 @@
+.header-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 3.5%;
+  border-bottom: 1px solid var(--faded-gray);
+  position: relative;
+  z-index: 15;
+}
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8rem;
+}
+.logo,
+.dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: clamp(2rem, 3vw, 3rem);
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.dot {
+  background-color: var(--olive);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.links-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+.nav-link {
+  width: fit-content;
+  z-index: 5;
+}
+.themeSwitch-contanct-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+}
+
+.nav-favorites {
+  background-color: var(--faded-gray);
+  border-radius: 50%;
+  font-size: 1.5rem;
+  height: 5rem;
+  width: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-icon,.heart-icon {
+  scale: 1.5;
+}
+.toggle-menu-btn,.mask
+ {
+  display: none;
+}
+
+/* .nav-link:hover,
+.active {
+  background-color: var(--olive);
+  border-color: var(--olive);
+  transition: 0.3s ease-in-out;
+  color: var(--white);
+} */
+.logo-wrapper.light-text {
+  color: var(--dark-green);
+}
+@media (width <= 960px) {
+  .header-wrapper {
+    max-width: 960px;
+    width: 100%;
+  }
+  .nav-wrapper {
+    gap: 1.3rem;
+  }
+  .links-wrapper {
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    align-items: flex-start;
+    margin-top: 5rem;
+    display: none;
+  }
+  .nav-link {
+    font-size: 2.5rem;
+  }
+
+  .toggle-menu-btn {
+    display: flex;
+    border: 1px solid var(--faded-gray);
+    border-radius: 0.4rem;
+    padding: 0.3rem;
+    color: var(--white);
+    width: 4rem;
+    height: 4rem;
+  }
+  .toggle-container{
+    padding: 0!important;
+    border: 0!important;
+  }
+  .nav-favorites {
+    background-color: inherit!important;
+    border-radius: 0!important;
+    font-size: 1.5rem;
+    height: fit-content!important;
+    width: fit-content!important;
+    
+  }
+  .menu-icon,.heart-icon {
+    scale: 1.2;
+  }
+  .mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(14, 16, 14, 0.792);
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    display: none;
+  }
+  .show {
+    display: flex;
+  }
+  .light-mask-bg{
+    background-color: rgba(191, 232, 191, 0.474);
+  }
+}
+
