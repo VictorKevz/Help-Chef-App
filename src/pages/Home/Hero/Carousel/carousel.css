@@ -5,8 +5,13 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 0 3.5%;
+  padding: 5rem 3.5%;
   position: relative;
+  background-color: var(--dark-green);
+  z-index: 5;
+  overflow: hidden;
+
+
 }
 .carousel-container {
   max-width: 1440px;
@@ -77,14 +82,14 @@
   align-items: center;
   justify-content: center;
   z-index: 5;
-  bottom: 1rem;
+  bottom: 6rem;
 
 }
 .prev {
-  left: 1.5rem;
+  left: 4%;
 }
 .next {
-  right: 0;
+  right: 4%;
 }
 .carousel-icon {
   scale: 2.5;
@@ -110,6 +115,22 @@
   background-color: var(--olive);
   color: var(--white);
 }
+.pattern-img {
+    position: absolute;
+    z-index: -1;
+    width: 55rem;
+    opacity: 0.08;
+    transform: rotate(90deg);
+  }
+  .top {
+    left: -30rem;
+    top: -15rem;
+    transform: rotate(180deg);
+  }
+  .bottom {
+    bottom: -12rem;
+    right: -30rem;
+  }
 @media (width <=960px) {
   .carousel-container {
     grid-template-columns: 1fr;
@@ -129,15 +150,8 @@
   .image-wrapper {
     border-radius: 0 0 1.2rem 1.2rem;
   }
-  .prev {
-    left: 0;
-    bottom: 1rem;
-  }
-  .next {
-    right: -1rem;
-    bottom: 1rem;
-  }
+  
   .carousel-icon {
-    scale: 2;
+    scale: 1.3;
   }
 }

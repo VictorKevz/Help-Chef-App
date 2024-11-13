@@ -6,16 +6,16 @@ export const carouselVariants = (direction) => ({
     transition: {
       type: "tween",
       ease: "easeInOut",
-      duration: 0.6,
+      duration: 0.7,
     },
   },
   exit: {
-    opacity: 0,
-    x: direction === "left" ? 100 : -100,
+    opacity: 0.5,
+    x: direction === "left" ? 50 : -50,
     transition: {
       type: "tween",
       ease: "easeInOut",
-      duration: 0.3,
+      duration: 0.4,
     },
   },
 });
