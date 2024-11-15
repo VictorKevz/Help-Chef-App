@@ -1,18 +1,47 @@
-.wrapper{
-  width: 100%!important;
-  display: flex!important;
-  align-items: center!important;
-  justify-content: center!important;
+.wrapper {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column!important;
+
+}
+.favorites-btn{
+  color: var(--white)!important;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: #61ad844f;
+}
+.liked{
+  background-color: var(--olive);
 }
 .light-body-bg {
-    background-color: var(--white);
-    /* color: var(--dark-green); */
-  }
-  .light-text {
-    color: var(--dark-green)!important;
-  }
- .light-cards-bg{
-  background-color: var(--white-2)!important;
- } 
+  background-color: var(--white);
+}
+.light-text {
+  color: var(--dark-green) !important;
+}
+.light-cards-bg {
+  background-color: var(--white-2) !important;
+  border: none!important;
 
+}
+.light-single-cards-bg {
+  background-color: #629e5a !important;
+}
+.light-title{
+  color: rgba(0, 0, 0, 0.356)!important; 
  
+}
+/* Customize the scrollbar container */
+::-webkit-scrollbar {
+  width: 12px !important;
+  background-color: #0c2518;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #61ad85;
+  border-radius: 10px;
+  height: 50px !important; 
+
+}

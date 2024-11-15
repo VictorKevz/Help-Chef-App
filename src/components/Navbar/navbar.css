@@ -127,19 +127,31 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(14, 16, 14, 0.792);
+    background-color: rgba(5, 6, 5, 0.187);
     z-index: -1;
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(8px);
     display: none;
+  }
+  .inner-mask{
+    position: fixed;
+    width: 75vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    background-color: rgb(14, 16, 14);
+
   }
   .show {
     display: flex;
   }
-  .light-mask-bg{
-    background-color: rgba(191, 232, 191, 0.474);
+  /* .light-mask-bg{
+    background-color: rgba(5, 6, 5, 0.187);
+  } */
+  .light-inner-mask-bg{
+   background-color: var(--white); 
   }
 }
 

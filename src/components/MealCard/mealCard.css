@@ -1,0 +1,86 @@
+.mealCard-wrapper.wrapper{
+ padding: 0 3.5%;  
+}
+
+.mealCard-grid{
+    margin-top: 8rem;
+    max-width: 1440px;
+    width: 100%;
+    display: grid;
+    /* grid-template-columns: repeat(4,1fr); */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-width: calc(4 * 300px);
+    gap: 4rem;
+}
+.mealCard{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 5;
+    border-radius: 1.2rem;
+    background-color: var(--dark-green);
+
+}
+.mealCard-bg{
+    min-height: 200px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 5;
+    border-radius: 1.2rem 1.2rem 0 0;
+
+}
+.mealCard-text{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    
+    padding: 0 1.5rem 2rem 2.5rem;
+}
+.status,.tag{
+    font-family: "DM Sans", sans-serif;
+
+    width: fit-content;
+    padding: .3rem .7rem;
+    background-color: #a9d88428;
+    color: #79ec21de;
+    font-size: 1.4rem;
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: .3rem;
+
+}
+.tag{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background-color: var(--dark-green);   
+
+}
+.hard{
+color: #ec7171;
+}
+
+.mealCard-title{
+    font-size: clamp(1.5rem,2vw,2rem);
+    margin-top: 1rem;
+}
+
+.mealCard-cta-wrapper{
+    border-top: 1px solid var(--faded-gray);
+    padding: 2rem 2.5rem 3rem 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.mealCard-link{
+    gap: .3rem;
+}
+.mealCard-arrow{
+    scale: 1.2;
+}

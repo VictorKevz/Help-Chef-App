@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { ThemeAppContext } from "../../App";
 
@@ -13,9 +13,17 @@ function Navbar() {
   };
   const navLinks = [
     { id: 1, text: "Home", path: "/" },
-    { id: 2, text: "Categories", path: "/category" },
+    { id: 2, text: "Categories", path: "/categories" },
     { id: 3, text: "Contact", path: "/contact" },
   ];
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => (document.body.style.overflow = "auto");
+  }, [isOpen]);
   return (
     <header className="header-wrapper">
       <nav className="nav-wrapper">
@@ -53,13 +61,20 @@ function Navbar() {
       </nav>
 
       <div className="themeSwitch-contanct-wrapper desktop">
-        <Link to="/favorites" className={`nav-favorites ${!isDark && "light-text"}`}>
+        <Link
+          to="/favorites"
+          className={`nav-favorites ${!isDark && "light-text"}`}
+        >
           <FavoriteBorder fontSize="large" className="heart-icon" />
         </Link>
         <ThemeSwitch />
       </div>
 
-      <div className={`mask ${isOpen && "show"} ${!isDark && "light-mask-bg"}`}></div>
+      <div
+        className={`mask ${isOpen && "show"}`}
+      >
+        <div className={`inner-mask ${!isDark && "light-inner-mask-bg"}`}></div>
+      </div>
     </header>
   );
 }
