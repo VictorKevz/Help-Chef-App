@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home";
 import MainCategory from "./pages/Category/MainCategory";
 import SingleCategory from "./pages/SingleCategory/SingleCategory";
 import Favorites from "./pages/Favorites/Favorites";
+import DetailsPage from "./pages/Details/DetailsPage";
 export const ThemeAppContext = createContext();
 export const DataContext = createContext();
 
@@ -55,11 +56,11 @@ function App() {
   //MEAL DATA DECLARATION & FAVORITES.......................................
   const initialData = {
     categoriesData: JSON.parse(localStorage.getItem("categories")) || [],
-    singleCategoryData:
-      JSON.parse(localStorage.getItem("singleCategory")) || [],
-    favorites: JSON.parse(localStorage.getItem("favorites")) || [],
+    singleCategoryData: [],
+    singleMealData:[],
     isLoading: true,
     error: "",
+    favorites: JSON.parse(localStorage.getItem("favorites")) || [],
   };
   const [mealData, dispatchMeal] = useReducer(mealReducer, initialData);
   //MEAL DATA DECLAARATION.......................................
@@ -75,9 +76,10 @@ function App() {
       if (key === "categoriesData") {
         formattedData = data.categories;
       }
-      if (key === "singleCategoryData") {
+      if (key === "singleCategoryData" || key === "singleMealData") {
         formattedData = data.meals;
       }
+      
       dispatchMeal({
         type: "UPDATE_DATA",
         payload: { key, data: formattedData },
@@ -98,15 +100,12 @@ function App() {
   useEffect(() => {
     localStorage.setItem("theme", JSON.stringify(isDark));
     localStorage.setItem("categories", JSON.stringify(mealData.categoriesData));
-    localStorage.setItem(
-      "singleCategory",
-      JSON.stringify(mealData.singleCategoryData)
-    );
+    
     localStorage.setItem("favorites", JSON.stringify(mealData.favorites));
   }, [
     isDark,
     mealData.categoriesData,
-    mealData.singleCategoryData,
+    
     mealData.favorites,
   ]);
   return (
@@ -117,7 +116,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/categories" element={<MainCategory />} />
-            <Route path="/:categoryName" element={<SingleCategory />} />
+            <Route path="/categories/:categoryName" element={<SingleCategory />} />
+            <Route path="/meals/:mealName" element={<DetailsPage />} />
             <Route path="/favorites" element={<Favorites />} />
           </Routes>
         </main>

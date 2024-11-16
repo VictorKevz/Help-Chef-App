@@ -17,13 +17,14 @@
   justify-content: space-between;
   gap: 4rem;
   max-width: 1440px;
+  width: 100%;
   background: var(--dark-green);
   border-radius: 1.2rem;
   padding: 3rem 2.5rem;
   border: 1px solid var(--faded-gray);
 }
 .singleCategory-title {
-    font-size: clamp(4rem, 8vw, 10vw);
+    font-size: clamp(5rem, 8vw, 10vw);
     background-repeat: repeat-x;
     background-size: 20% 100%; 
     background-clip: text;

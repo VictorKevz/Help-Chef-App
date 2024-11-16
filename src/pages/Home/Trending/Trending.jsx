@@ -39,7 +39,7 @@ function Trending() {
                   .join(".")}
                 .
               </p>
-              <Link className="link trending" to={category?.strCategory}>
+              <Link className="link trending" to={`/categories/${category?.strCategory}`}>
                 Learn More
               </Link>
             </div>

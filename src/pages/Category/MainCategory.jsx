@@ -55,7 +55,7 @@ function MainCategory() {
             {filteredData?.map((category) => {
               return (
                 <Link
-                  to={`/${category?.strCategory}`}
+                  to={`/categories/${category?.strCategory}`}
                   key={category?.idCategory}
                   className={`main-category-card ${!isDark && "light-card"}`}
                   style={{

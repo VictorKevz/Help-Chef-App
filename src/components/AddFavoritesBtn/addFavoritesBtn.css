@@ -1,0 +1,29 @@
+.favorites-btn{
+    color: var(--white)!important;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: var(--dark-olive);
+    position: relative;
+    z-index: 5;
+
+  }
+  .liked{
+    background-color: var(--red);
+    z-index: 5;
+  }
+  .favorites-btn:before{
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background-color: #449125ae;
+    border-radius: 50%;
+    scale: 0;
+  }
+  .favorites-btn:hover::before{
+    scale: 1.1;
+    transition: .3s ease-in-out;
+    z-index: -2!important;
+
+  }

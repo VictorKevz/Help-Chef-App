@@ -6,16 +6,7 @@
   flex-direction: column!important;
 
 }
-.favorites-btn{
-  color: var(--white)!important;
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-  background-color: #61ad844f;
-}
-.liked{
-  background-color: var(--olive);
-}
+
 .light-body-bg {
   background-color: var(--white);
 }
@@ -23,7 +14,9 @@
   color: var(--dark-green) !important;
 }
 .light-cards-bg {
-  background-color: var(--white-2) !important;
+  background-color: var(--white) !important;
+  background-color: #CFE7D9!important;
+
   border: none!important;
 
 }

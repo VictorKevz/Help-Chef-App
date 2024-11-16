@@ -15,7 +15,7 @@ export const carouselData = [
         id: 0,
         heading: "All Your Favorite Desserts in One Place!",
         tagline: "Satisfy your sweet cravings",
-        cta: "/desserts",
+        cta: "/categories/Dessert",
         textBg: dessertBg,
         imgBg: dessertImg
     },
@@ -23,7 +23,7 @@ export const carouselData = [
         id: 1,
         heading: "Rise and Shine with Delicious Breakfasts!",
         tagline: "Start your day with a tasty boost",
-        cta: "/breakfast",
+        cta: "/categories/Breakfast",
         textBg: breakfastBg,
         imgBg: breakfastImg
     },
@@ -31,7 +31,7 @@ export const carouselData = [
         id: 2,
         heading: "Irresistible Chicken Recipes Await!",
         tagline: "Perfect for every occasion",
-        cta: "/chicken",
+        cta: "/categories/Chicken",
         textBg: chickenBg,
         imgBg: chickenImg
     },
@@ -40,7 +40,7 @@ export const carouselData = [
         id: 3,
         heading: "Indulge in Rich, Authentic Pasta Flavors!",
         tagline: "Taste Italy from your home",
-        cta: "/pasta",
+        cta: "/categories/Pasta",
         textBg: pastaBg,
         imgBg: pastaImg
     },
@@ -48,7 +48,7 @@ export const carouselData = [
         id: 4,
         heading: "Explore Flavorful Vegetarian Meals!",
         tagline: "Nutritious and delicious",
-        cta: "/vegetarian",
+        cta: "/categories/Vegetarian",
         textBg: vegBg,
         imgBg: vegImg
     },

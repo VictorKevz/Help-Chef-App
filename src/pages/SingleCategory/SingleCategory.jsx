@@ -11,7 +11,7 @@ function SingleCategory() {
   const { mealData, fetchData } = useContext(DataContext);
   const { isDark } = useContext(ThemeAppContext);
   const dynamicCategoryObj = mealData?.categoriesData.find(
-    (obj) => obj?.strCategory === categoryName
+    (obj) => obj?.strCategory.trim() === categoryName.trim()
   );
   useEffect(() => {
     const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoryName}`;
@@ -21,25 +21,24 @@ function SingleCategory() {
   const breadcrumbs = [
     { id: 1, path: "/", text: "Home" },
     { id: 2, path: "/categories", text: "Categories" },
-    { id: 3, path: `/${categoryName}`, text: categoryName },
+    { id: 3, path: `/categories/${categoryName}`, text: categoryName },
   ];
   //  Manipulating Text ....................................
   const parag = dynamicCategoryObj?.strCategoryDescription?.replace(
     /\[\d+\]/g,
     ""
   );
-  const limitedText = parag?.split(".").slice(0, 2).join("");
-  const textToShow = isLimited ? limitedText : parag;
-  const sentencesLength = parag
-    .split(".")
-    .filter((sentence) => sentence.trim() !== "").length;
+  const sentences = parag?.split(".").filter((sentence) => sentence.trim() !== "");
+const limitedText = sentences.slice(0, 2).join(". ");
+const textToShow = isLimited ? limitedText : parag;
+const sentencesLength = sentences.length;
   //  Manipulating Text ....................................
 
   const isRound = categoryName === "Goat" || categoryName === "Breakfast";
   if (mealData?.isLoading) {
     return <p className="loading">Please wait a second...</p>;
   }
-  if (mealData?.error) {
+  if (mealData.error) {
     return <p className="loading">An error occurred! {mealData.error}</p>;
   }
   return (
