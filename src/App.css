@@ -11,13 +11,11 @@
   background-color: var(--white);
 }
 .light-text {
-  color: var(--dark-green) !important;
+  color: var(--very-dark-green) !important;
 }
 .light-cards-bg {
-  background-color: var(--white) !important;
-  background-color: #CFE7D9!important;
-
-  border: none!important;
+  background-color: var(--white-2) !important;
+  box-shadow: 0 0 2rem -1rem rgba(21, 125, 125, 0.209)!important;
 
 }
 .light-single-cards-bg {

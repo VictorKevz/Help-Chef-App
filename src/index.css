@@ -4,14 +4,17 @@
   --dark-green: #31383c;
   --olive-green: #31352e;
   --faded-gray: #b4aeae3f;
+  --teal-green:#348F83;
 
   --olive: #74a34d;
-  --dark-olive: #3b5129;
-  --sage-green: #cbf3ade0;
+  --olive: #348F83;
+  --dark-olive: #1c524e;
+  --sage-green: #447370;
   --white: #ffffff;
-  --white-2:#F0F3F2;
+  --white-2:#f0f3f2ed;
   --white-3: #d3dcd3;
-  --red:#e75959;
+  --aqua:#61a8a3;
+  --red:#d47171;
 }
 * {
   box-sizing: border-box;

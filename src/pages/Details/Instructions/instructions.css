@@ -1,0 +1,71 @@
+.instructions-wrapper {
+  
+  width: 100%;
+  border: 1px solid var(--faded-gray);
+  background-color: var(--dark-green);
+  border-radius: 1.2rem;
+}
+.instructions-header {
+  border-radius: 1.2rem 1.2rem 0 0;
+  padding: 3rem 2.5rem;
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  background: url("../../../assets/images/details-header.jpg") no-repeat top
+    center / cover;
+}
+.overlay.instructions {
+  border-radius: 1rem 1rem 0 0;
+}
+.instructions-title {
+  font-size: clamp(4rem, 5vw, 7rem);
+}
+.note-btn{
+    margin-top: 2rem;
+}
+.note {
+  font-family: "DM Sans", sans-serif;
+
+  margin-top: 1rem;
+  font-style: oblique;
+  font-weight: 800;
+  background-color: var(--white);
+  color: var(--teal-green);
+  width: fit-content;
+  padding: 0.3rem 1rem;
+  border-radius: 0.64rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.steps-wrapper {
+  padding: 3rem 2.5rem;
+  border-top: 1px solid var(--faded-gray);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.step-num,
+.note-btn {
+  min-width: 3rem;
+  min-height: 3rem;
+  border-radius: 50%;
+  background-color: var(--teal-green);
+  color: var(--white);
+}
+.done {
+  text-decoration: line-through;
+  opacity: 0.5;
+  transition:.3s ease-in-out;
+}
+.marked{
+    opacity: 0.5;
+    transition:.3s ease-in-out;
+}

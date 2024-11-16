@@ -56,8 +56,8 @@
 
     width: fit-content;
     padding: .3rem .7rem;
-    background-color: var(--very-dark-green);
-    color: #79ec21de;
+    background-color: var(--teal-green);
+    color: var(--white);
     font-size: 1.4rem;
     border-radius: .5rem;
     display: flex;
@@ -75,6 +75,7 @@
 }
 .hard{
 color: var(--red);
+background-color: var(--sage-green);
 }
 
 .mealCard-title{

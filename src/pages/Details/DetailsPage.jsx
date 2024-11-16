@@ -1,80 +1,129 @@
 import React, { useContext, useEffect } from "react";
 import "../../styles/detailsPage.css";
-import { DataContext } from "../../App";
+import { DataContext, ThemeAppContext } from "../../App";
 import { Link, useParams } from "react-router-dom";
-import { ArrowForwardIos, Category, Label, Language } from "@mui/icons-material";
+import {
+  ArrowForwardIos,
+  Category,
+  Label,
+  Language,
+} from "@mui/icons-material";
+import pattern from "../../assets/images/home/hero/pattern.svg";
+import Instructions from "./Instructions/Instructions";
+import YoutubeVideo from "./YoutubeVideo/YoutubeVideo";
+import Measures from "./Measures/Measures";
+import RelatedMeal from "./RelatedMeals/RelatedMeal";
+
 function DetailsPage() {
   const { mealData, fetchData } = useContext(DataContext);
+  const { isDark } = useContext(ThemeAppContext);
   const { mealName } = useParams();
   const dataObj = mealData?.singleMealData[0];
-  //   const headingData = [
-  //     { id: 0, text: "Area", subject: dataObj?.strArea, icon: Language },
-  //     { id: 1, text: "Category", subject: dataObj?.strCategory, icon: Category },
-  //     { id: 2, text: "Tags", subject: dataObj?.strTags, icon: Label },
-  //   ];
+
+  const breadcrumbs = [
+    { id: 1, path: "/", text: "Home" },
+    {
+      id: 2,
+      path: `/categories/${dataObj?.strCategory}`,
+      text: dataObj?.strCategory,
+    },
+    {
+      id: 3,
+      path: `/meals/${dataObj?.strMeal}`,
+      text: `${dataObj?.strMeal.split(" ").slice(0, 2).join(" ")}...`,
+    },
+  ];
   useEffect(() => {
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`;
     fetchData(url, "singleMealData");
   }, [mealName]);
   return (
     <section className="detailsPage-wrapper wrapper">
-        <div className="breadcrumbs-wrapper">
-        <Link to="/" className="breadcrumb">Home</Link>
-        <ArrowForwardIos fontSize="large" className="arrow-breadcrumb"/>
-        <Link to={`/categories/${dataObj?.strCategory}`} className="breadcrumb">{dataObj?.strCategory}</Link>
-        <ArrowForwardIos fontSize="large" className="arrow-breadcrumb"/>
-        <Link to={`/meals/${dataObj?.strMeal}`} className="breadcrumb active">{mealName.split(" ").slice(0,2).join(" ")}..</Link>
-        </div>
-      <header className="detailsPage-header"></header>
-      <article className="detailsPage-content-wrapper">
-        <div className="left-side-wrapper">
+      <div className="breadcrumbs-wrapper details">
+        {breadcrumbs.map((link) => {
+          const isCurrent = link.id === 3;
+          return (
+            <Link
+              key={link.id}
+              to={link.path}
+              className={`breadcrumb ${!isDark && "light-text"} ${
+                isCurrent && "disabled"
+              }`}
+            >
+              {link.text}
+              {link.id !== 3 && (
+                <ArrowForwardIos
+                  className={`arrow-icon ${!isDark && "light-text"}`}
+                />
+              )}
+            </Link>
+          );
+        })}
+      </div>
+      <header className="detailsPage-header">
+        <div className="detailsPage-text-wrapper">
+          <p className="category">{dataObj?.strCategory}</p>
           <h1 className="detailsPage-title">{dataObj?.strMeal}</h1>
+        </div>
+        <div className="detailsPage-img-wrapper">
           <img
             src={dataObj?.strMealThumb}
             alt={`Image of ${dataObj?.strMeal}`}
             className="detailsPage-img"
           />
         </div>
-        <div className="right-side-wrapper">
-          <ul className="tags-category-wrapper">
-            <li className="item">
-              <span className="icon-wrapper">
-                <Category fontSize="large" className="item-icon" />
+        <div className="overlay detailsPage"></div>
+      </header>
+      <ul className="tags-category-wrapper">
+        <li className={`item ${!isDark && "light-text"}`}>
+          <span className="icon-wrapper">
+            <Category fontSize="large" className="item-icon" />
+          </span>
+
+          <h3 className="text">
+            Category
+            <span className="value">{dataObj?.strCategory}</span>
+          </h3>
+        </li>
+        <li className="divider"></li>
+        <li className={`item ${!isDark && "light-text"}`}>
+          <span className="icon-wrapper">
+            <Language fontSize="large" className="item-icon" />
+          </span>
+
+          <h3 className="text">
+            Area
+            <span className="value">{dataObj?.strArea}</span>
+          </h3>
+        </li>
+        {dataObj?.strTags !== null && <li className="divider"></li>}
+
+        {dataObj?.strTags !== null && (
+          <li className={`item ${!isDark && "light-text"}`}>
+            <span className="icon-wrapper">
+              <Label fontSize="large" className="item-icon" />
+            </span>
+
+            <h3 className="text">
+              Tags
+              <span className="value">
+                {dataObj?.strTags.split(",").slice(0, 2).join(", ")}
               </span>
-
-              <h3 className="text">
-                Category
-                <span className="value">{dataObj?.strCategory}</span>
-              </h3>
-            </li>
-            <li className="divider"></li>
-            <li className="item">
-              <span className="icon-wrapper">
-                <Language fontSize="large" className="item-icon" />
-              </span>
-
-              <h3 className="text">
-                Area
-                <span className="value">{dataObj?.strArea}</span>
-              </h3>
-            </li>
-            {dataObj?.strTags !== null && (<li className="divider"></li>)}
-            
-            {dataObj?.strTags !== null && (
-              <li className="item">
-                <span className="icon-wrapper">
-                  <Label fontSize="large" className="item-icon" />
-                </span>
-
-                <h3 className="text">
-                  Tags
-                  <span className="value">{dataObj?.strTags.split(",").slice(0,2).join(", ")}</span>
-                </h3>
-              </li>
-            )}
-          </ul>
-        </div>
-      </article>
+            </h3>
+          </li>
+        )}
+      </ul>
+      <section className="detailsPage-content-wrapper">
+        <aside className="left-side">
+          <Instructions data={dataObj} />
+        </aside>
+        <aside className="right-side">
+          <Measures data={dataObj} />
+          <YoutubeVideo url={dataObj?.strYoutube} />
+        </aside>
+      </section>
+      <RelatedMeal mealName={mealName}/>
+      {/* <img src={pattern} alt="" className="pattern-img details" /> */}
     </section>
   );
 }
