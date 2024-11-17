@@ -28,21 +28,23 @@ const mealReducer = (state, action) => {
         ...state,
         [key]: data,
       };
-      case "UPDATE_FAVORITES":
-        const isLiked = state.favorites.some((item) => item.idMeal === action.meal.idMeal)
-        if(isLiked){
-          return {
-            ...state,
-            favorites:state.favorites.filter((item)=> item.idMeal !== action.meal.idMeal)
-          }
-          
-        } 
-        else{
-          return {
-            ...state,
-            favorites:[...state.favorites,{...action.meal}]
-          }  
-        } 
+    case "UPDATE_FAVORITES":
+      const isLiked = state.favorites.some(
+        (item) => item.idMeal === action.meal.idMeal
+      );
+      if (isLiked) {
+        return {
+          ...state,
+          favorites: state.favorites.filter(
+            (item) => item.idMeal !== action.meal.idMeal
+          ),
+        };
+      } else {
+        return {
+          ...state,
+          favorites: [...state.favorites, { ...action.meal }],
+        };
+      }
     default:
       return state;
   }
@@ -57,7 +59,8 @@ function App() {
   const initialData = {
     categoriesData: JSON.parse(localStorage.getItem("categories")) || [],
     singleCategoryData: [],
-    singleMealData:[],
+    singleMealData: [],
+    categoryList:JSON.parse(localStorage.getItem("categoryList")) || [],
     isLoading: true,
     error: "",
     favorites: JSON.parse(localStorage.getItem("favorites")) || [],
@@ -76,10 +79,14 @@ function App() {
       if (key === "categoriesData") {
         formattedData = data.categories;
       }
-      if (key === "singleCategoryData" || key === "singleMealData") {
+      if (
+        key === "singleCategoryData" ||
+        key === "singleMealData" ||
+        key === "categoryList"
+      ) {
         formattedData = data.meals;
       }
-      
+
       dispatchMeal({
         type: "UPDATE_DATA",
         payload: { key, data: formattedData },
@@ -97,29 +104,33 @@ function App() {
       fetchData(url, "categoriesData");
     }
   }, []);
+  
   useEffect(() => {
-    localStorage.setItem("theme", JSON.stringify(isDark));
     localStorage.setItem("categories", JSON.stringify(mealData.categoriesData));
-    
+    localStorage.setItem("categoryList", JSON.stringify(mealData.categoryList));
     localStorage.setItem("favorites", JSON.stringify(mealData.favorites));
   }, [
-    isDark,
-    mealData.categoriesData,
     
+    mealData.categoriesData,
+    mealData.categoryList,
     mealData.favorites,
   ]);
   return (
     <ThemeAppContext.Provider value={{ isDark, setDark }}>
-      <DataContext.Provider value={{ mealData, fetchData,dispatchMeal }}>
-        <main className={`outer-container ${!isDark && "light-body-bg"}`}>
+      <DataContext.Provider value={{ mealData, fetchData, dispatchMeal }}>
+        <main className={`outer-container `}>
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/categories" element={<MainCategory />} />
-            <Route path="/categories/:categoryName" element={<SingleCategory />} />
+            <Route
+              path="/categories/:categoryName"
+              element={<SingleCategory />}
+            />
             <Route path="/meals/:mealName" element={<DetailsPage />} />
             <Route path="/favorites" element={<Favorites />} />
           </Routes>
+          
         </main>
       </DataContext.Provider>
     </ThemeAppContext.Provider>

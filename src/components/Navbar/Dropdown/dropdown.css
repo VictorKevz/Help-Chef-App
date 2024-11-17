@@ -1,0 +1,16 @@
+.dropdown-wrapper{
+    position: absolute;
+    top: 100%;
+    /* right: 0; */
+    margin-top: 3.9rem;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    place-items: self-start;
+    gap: 2rem;
+    background-color: var(--dark-green);
+    border: 1px solid var(--faded-gray);
+    box-shadow: 0 0 2rem rgba(15, 72, 72, 0.371);
+    padding: 4rem 2.5rem;
+    border-radius: 1.2rem;
+
+}

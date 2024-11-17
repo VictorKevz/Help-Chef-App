@@ -10,12 +10,12 @@ export const carouselVariants = (direction) => ({
     },
   },
   exit: {
-    opacity: 0.5,
-    x: direction === "left" ? 50 : -50,
+    opacity: 0,
+    x: direction === "left" ? 20 : -20,
     transition: {
       type: "tween",
       ease: "easeInOut",
-      duration: 0.4,
+      duration: 0.3,
     },
   },
 });

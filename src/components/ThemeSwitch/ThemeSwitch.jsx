@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useEffect } from "react";
 import Switch from "@mui/material/Switch";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
@@ -11,6 +11,13 @@ function ThemeSwitch() {
     const { checked } = event.target;
     setDark(checked);
   };
+
+  useEffect(() => {
+    localStorage.setItem("theme", JSON.stringify(isDark));
+  }, [
+    isDark,
+    
+  ]);
   return (
     <div className={`toggle-container ${!isDark && "border-light"}`}>
       {!isDark && (

@@ -13,6 +13,7 @@ import Instructions from "./Instructions/Instructions";
 import YoutubeVideo from "./YoutubeVideo/YoutubeVideo";
 import Measures from "./Measures/Measures";
 import RelatedMeal from "./RelatedMeals/RelatedMeal";
+import AddFavoritesBtn from "../../components/AddFavoritesBtn/AddFavoritesBtn";
 
 function DetailsPage() {
   const { mealData, fetchData } = useContext(DataContext);
@@ -38,7 +39,8 @@ function DetailsPage() {
     fetchData(url, "singleMealData");
   }, [mealName]);
   return (
-    <section className="detailsPage-wrapper wrapper">
+    <section className={`detailsPage-wrapper wrapper ${!isDark && "light-body-bg"}`}>
+      <div className="like-breadcrumbs-wrapper">
       <div className="breadcrumbs-wrapper details">
         {breadcrumbs.map((link) => {
           const isCurrent = link.id === 3;
@@ -59,6 +61,8 @@ function DetailsPage() {
             </Link>
           );
         })}
+      </div>
+      <AddFavoritesBtn meal={dataObj}/>
       </div>
       <header className="detailsPage-header">
         <div className="detailsPage-text-wrapper">

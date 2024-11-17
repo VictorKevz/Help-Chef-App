@@ -8,7 +8,7 @@
 }
 
 .light-body-bg {
-  background-color: var(--white);
+  background-color: var(--white)!important;
 }
 .light-text {
   color: var(--very-dark-green) !important;

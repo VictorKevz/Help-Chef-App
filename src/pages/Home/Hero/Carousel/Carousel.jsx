@@ -12,7 +12,7 @@ import pattern from "../../../../assets/images/home/hero/pattern.svg"
 function Carousel() {
   const { isDark } = useContext(ThemeAppContext);
   const [direction, setDirection] = useState("right");
-  const [index, setIndex] = useState(4);
+  const [index, setIndex] = useState(2);
   const { heading, tagline, cta, textBg, imgBg } = carouselData[index];
 
   const nextSlide = () => {

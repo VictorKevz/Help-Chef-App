@@ -3,10 +3,18 @@
   /* padding: 4rem 3.5%; */
   position: relative;
   z-index: 5;
+  background-color: var(--dark-green);
 }
-.breadcrumbs-wrapper.details{
-    padding-left: 3.5%;
+.like-breadcrumbs-wrapper{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding: 3rem 3.5% 0 3.5%;
 }
+/* .breadcrumbs-wrapper.details{
+    
+} */
 .detailsPage-header {
   margin-top: 20rem;
   max-width: 1100px;
@@ -116,11 +124,15 @@
     border-radius: 1.2rem;
     gap: 5rem;
 }
-
+/* RELATED MEALS SECTION............................ */
 .relatedMeal-wrapper{
-background-color: var(--dark-green);
+background-color: var(--very-dark-green);
 margin-top: 8rem;
 padding: 5rem 3.5%;
+/* border-top: 1px solid var(--faded-gray); */
+}
+.light-related-bg {
+  background-color: var(--white-3)!important;
 }
 
 

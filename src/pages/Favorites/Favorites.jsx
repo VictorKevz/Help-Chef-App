@@ -8,13 +8,16 @@ import { Link } from "react-router-dom";
 function Favorites() {
   const { mealData } = useContext(DataContext);
   const { isDark } = useContext(ThemeAppContext);
+  const favCount = mealData?.favorites?.length;
   return (
-    <section className="favorites-wrapper wrapper">
+    <section className={`favorites-wrapper wrapper ${!isDark && "light-body-bg"}`}>
       <header className={`favorites-header ${!isDark && "light-text"}`}>
-        <h1 className="favorites-title">My Favorites</h1>
+        <h1 className="favorites-title">
+          My Favorites (<span className="favCount">{favCount > 0 ? favCount : 0}</span>)
+        </h1>
         <p className="favorites-parag">
           Easily and conveniently find all your favorite recipes in one place!
-          Click <Favorite color="success"/> icon to remove a recipe!
+          Click <Favorite color="success" /> icon to remove a recipe!
         </p>
       </header>
       {mealData.favorites.length > 0 ? (

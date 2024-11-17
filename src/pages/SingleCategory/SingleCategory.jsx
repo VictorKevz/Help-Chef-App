@@ -42,7 +42,7 @@ const sentencesLength = sentences.length;
     return <p className="loading">An error occurred! {mealData.error}</p>;
   }
   return (
-    <section className="singleCategory-wrapper wrapper">
+    <section className={`singleCategory-wrapper wrapper ${!isDark && "light-body-bg"}`}>
       <div className="breadcrumbs-wrapper">
         {breadcrumbs.map((link) => {
           const isCurrent = link.text === categoryName;

@@ -5,15 +5,24 @@
   overflow: hidden;
   flex-direction: column;
 }
-
-.AI-search-wrapper{
+.fixed-bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: url("../../../assets/images/fixed-bg.svg")no-repeat center/cover;
     
+  }
+.AI-search-wrapper{
     width: 100%;
-    padding: 0 3.5%;
-    min-height: 350px;
-    background-image: url("../../../assets/images/home/hero/search-bg.svg");
+    padding: 5rem 3.5%;
+    min-height: 550px;
+    /* background-image: url("../../../assets/images/home/hero/search-bg.svg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
+    background-color: transparent!important;
     display: flex;
     align-items: center;
     justify-content: center;

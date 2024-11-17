@@ -11,7 +11,7 @@ function MainCategory() {
 
   const filteredData = mealData?.categoriesData.filter((category)=>category?.strCategory.toLowerCase().includes(query))
   return (
-    <section className={`main-category-wrapper wrapper`}>
+    <section className={`main-category-wrapper wrapper ${!isDark && "light-body-bg"}`}>
       <header className="mainCategory-bg">
         <div className="mainCategoryText">
           <h1 className="categories-title">Explore Our Categories</h1>
@@ -23,13 +23,13 @@ function MainCategory() {
         </div>
         {/* <div className="overlay"></div> */}
       </header>
-      <div className="mainCategory-container">
+      <div className={`mainCategory-container ${!isDark && "light-body-bg"}`}>
         <div className="main-category-filters">
           <div className="breadcrumbs-wrapper">
-            <Link to="/" className="breadcrumb">
+            <Link to="/" className={`breadcrumb ${!isDark && "light-text"}`}>
               Home
             </Link>
-            <ArrowForwardIos />
+            <ArrowForwardIos className={`${!isDark && "light-text"}`} />
             <p className="categories">Categories</p>
           </div>
           <fieldset className="mainCategory-field">

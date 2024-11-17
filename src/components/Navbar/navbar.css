@@ -7,6 +7,8 @@
   border-bottom: 1px solid var(--faded-gray);
   position: relative;
   z-index: 15;
+   background-color: var(--very-dark-green);
+ 
 }
 .nav-wrapper {
   display: flex;
@@ -36,6 +38,10 @@
   align-items: center;
   justify-content: center;
   gap: 4rem;
+  position: relative;
+}
+.nav-item{
+  position: relative;
 }
 .nav-link {
   width: fit-content;
@@ -49,7 +55,9 @@
 }
 
 .nav-favorites {
-  background-color: var(--faded-gray);
+  background-color: var(--dark-olive);
+  border: 2px solid var(--faded-gray);
+
   border-radius: 50%;
   font-size: 1.5rem;
   height: 5rem;
@@ -57,8 +65,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
-
+.filled{
+  background-color: var(--teal-green);
+}
+.fav-count{
+  position: absolute;
+  top: -1rem;
+  right: -.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: var(--red);
+  color: var(--white);
+  font-size: 1.6rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
 .menu-icon,.heart-icon {
   scale: 1.5;
 }
@@ -111,15 +137,13 @@
     border: 0!important;
   }
   .nav-favorites {
-    background-color: inherit!important;
-    border-radius: 0!important;
     font-size: 1.5rem;
-    height: fit-content!important;
-    width: fit-content!important;
+    height: 3rem;
+    width: 3rem;
     
   }
   .menu-icon,.heart-icon {
-    scale: 1.2;
+    scale: 1;
   }
   .mask {
     position: fixed;

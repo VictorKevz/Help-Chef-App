@@ -11,9 +11,9 @@
   --dark-olive: #1c524e;
   --sage-green: #447370;
   --white: #ffffff;
-  --white-2:#f0f3f2ed;
-  --white-3: #d3dcd3;
-  --aqua:#61a8a3;
+  --white-2:#e6eae9;
+  --white-3: #ebf4f4;
+  --aqua:#46b4ad;
   --red:#d47171;
 }
 * {
@@ -41,9 +41,9 @@ h1,h2,h3,h4,button,a{
   align-items: center;
   width: 100%;
   position: relative;
-  background-color: var(--very-dark-green);
+  /* background-color: var(--very-dark-green); */
   color: var(--white-2);
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
 button,
