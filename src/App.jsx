@@ -30,13 +30,13 @@ const mealReducer = (state, action) => {
       };
     case "UPDATE_FAVORITES":
       const isLiked = state.favorites.some(
-        (item) => item.idMeal === action.meal.idMeal
+        (item) => item?.idMeal === action.meal.idMeal
       );
       if (isLiked) {
         return {
           ...state,
           favorites: state.favorites.filter(
-            (item) => item.idMeal !== action.meal.idMeal
+            (item) => item?.idMeal !== action.meal?.idMeal
           ),
         };
       } else {

@@ -6,7 +6,7 @@ function AddFavoritesBtn({ meal }) {
   const { mealData, dispatchMeal } = useContext(DataContext);
   // const{isDark} = useContext(ThemeAppContext)
 
-  const isLiked = mealData.favorites.some((item) => item.idMeal === meal.idMeal);
+  const isLiked = mealData.favorites.some((item) => item?.idMeal === meal?.idMeal);
 
   return (
     <button
