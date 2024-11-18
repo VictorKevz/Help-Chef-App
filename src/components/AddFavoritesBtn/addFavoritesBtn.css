@@ -17,13 +17,15 @@
     position: absolute;
     width: 150%;
     height: 150%;
-    background-color: #449125ae;
+    background-color: #46b4ad76;
     border-radius: 50%;
     scale: 0;
+    z-index: -1!important;
+
   }
   .favorites-btn:hover::before{
     scale: 1.1;
     transition: .3s ease-in-out;
-    z-index: -2!important;
+    z-index: -1!important;
 
   }

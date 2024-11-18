@@ -60,6 +60,7 @@
   background-color: var(--teal-green);
   color: var(--white);
 }
+
 .done {
   text-decoration: line-through;
   opacity: 0.5;

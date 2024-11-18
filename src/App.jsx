@@ -7,6 +7,7 @@ import MainCategory from "./pages/Category/MainCategory";
 import SingleCategory from "./pages/SingleCategory/SingleCategory";
 import Favorites from "./pages/Favorites/Favorites";
 import DetailsPage from "./pages/Details/DetailsPage";
+import Contact from "./pages/Contact/Contact";
 export const ThemeAppContext = createContext();
 export const DataContext = createContext();
 
@@ -129,6 +130,7 @@ function App() {
             />
             <Route path="/meals/:mealName" element={<DetailsPage />} />
             <Route path="/favorites" element={<Favorites />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
           
         </main>

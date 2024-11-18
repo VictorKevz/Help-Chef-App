@@ -4,7 +4,6 @@ import { DataContext, ThemeAppContext } from "../../App";
 import "./addFavoritesBtn.css"
 function AddFavoritesBtn({ meal }) {
   const { mealData, dispatchMeal } = useContext(DataContext);
-  // const{isDark} = useContext(ThemeAppContext)
 
   const isLiked = mealData.favorites.some((item) => item?.idMeal === meal?.idMeal);
 
