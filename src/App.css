@@ -14,7 +14,7 @@
   color: var(--very-dark-green) !important;
 }
 .light-cards-bg {
-  background-color: var(--white-2) !important;
+  background-color: var(--white-3) !important;
   box-shadow: 0 0 2rem -1rem rgba(21, 125, 125, 0.209)!important;
 
 }

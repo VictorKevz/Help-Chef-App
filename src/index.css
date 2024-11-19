@@ -3,7 +3,7 @@
   --very-dark-green: #262b2e;
   --dark-green: #31383c;
   --olive-green: #31352e;
-  --faded-gray: #b4aeae3f;
+  --faded-gray: #b4aeae6a;
   --teal-green:#348F83;
 
   --olive: #74a34d;
@@ -77,7 +77,7 @@ p {
 fieldset,input {
   border: none;
 }
-input:focus {
+input:focus,textarea:focus {
   outline: none;
 }
 

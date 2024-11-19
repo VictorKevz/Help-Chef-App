@@ -1,0 +1,91 @@
+.form-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 3.5rem 2rem;
+}
+.field {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.form-label {
+  margin: 0 0 0.8rem 1.6rem;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.form-input,
+.form-message {
+  width: 100%;
+  background-color: inherit;
+  border: 1px solid var(--faded-gray);
+  border-radius: 2.8rem;
+  padding-left: 1.5rem;
+  color: var(--white-2);
+  font-size: 1.8rem;
+}
+.form-input {
+  height: 5.6rem;
+}
+.message-field {
+  width: 100%;
+}
+ .form-message {
+  padding-top: 2rem;
+  resize: none;
+}
+.btn-field {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-btn {
+  background-color: var(--aqua);
+  max-width: 130px;
+  width: 100%;
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+.clear-btn{
+    background-color: inherit;
+    position: relative;
+    border-bottom: 2px solid var(--teal-green);
+    color: var(--white-2);
+    width: fit-content;
+}
+
+.light-input{
+    border-color: #56525291;
+    color: var(--very-dark-green);
+}
+
+.error-message{
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--red);
+    margin-top: .64rem;
+    padding-left: 1.6rem;
+}
+.error-border{
+    border-color: var(--red);
+}
+.form-input:focus,.form-message:focus{
+    border: 1px solid var(--aqua);
+    transition: .3s ease-in-out;
+    cursor: pointer;
+    caret-color: var(--aqua);
+}
+
+.form-input:hover,.form-message:hover{
+    border: 1px solid var(--aqua);
+    transition: .3s ease-in-out;
+    cursor: pointer;
+    caret-color: var(--aqua);
+}
+
+
+

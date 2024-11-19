@@ -42,7 +42,7 @@ function Navbar() {
   
   const favoritesCount = mealData?.favorites?.length;
   return (
-    <header className={`header-wrapper ${!isDark && "light-body-bg"}`}>
+    <header className={`header-wrapper ${!isDark && "light-cards-bg"}`}>
       <nav className="nav-wrapper">
         <button type="button" className="toggle-menu-btn" onClick={handleMenu}>
           {isOpen ? (

@@ -50,6 +50,60 @@ const mealReducer = (state, action) => {
       return state;
   }
 };
+
+const formReducer = (state, action) => {
+  switch (action.type) {
+    case "UPDATE_FORM":
+      const { name, value } = action.payload;
+      return {
+        ...state,
+        formData: {
+          ...state.formData,
+          [name]: value,
+        },
+        isValid: {
+          ...state.isValid,
+          [name]: true,
+        },
+      };
+    case "VALIDATE_FORM":
+      return {
+        ...state,
+        isValid: { 
+          ...state.isValid,
+          ...action.newValid
+         },
+      };
+    case "SHOW_MODAL":
+      return{
+        ...state,
+        showModal:true
+      }
+      case "CLOSE_MODAL":
+      return{
+        ...state,
+        showModal:false
+      }
+     case "CLEAR_FORM":
+      return {
+        formData: {
+          fullName: "",
+          email: "",
+          phone: "",
+          message: "",
+        },
+        isValid: {
+          fullName: true,
+          email: true,
+          phone: true,
+          message: true,
+        },
+        showModal:false
+      } 
+    default:
+      return state;
+  }
+};
 function App() {
   const [isDark, setDark] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -61,13 +115,32 @@ function App() {
     categoriesData: JSON.parse(localStorage.getItem("categories")) || [],
     singleCategoryData: [],
     singleMealData: [],
-    categoryList:JSON.parse(localStorage.getItem("categoryList")) || [],
+    categoryList: JSON.parse(localStorage.getItem("categoryList")) || [],
     isLoading: true,
     error: "",
     favorites: JSON.parse(localStorage.getItem("favorites")) || [],
   };
   const [mealData, dispatchMeal] = useReducer(mealReducer, initialData);
   //MEAL DATA DECLAARATION.......................................
+
+  //CONTANCT PAGE DECLARATION.......................................
+  const initialForm = {
+    formData: {
+      fullName: "",
+      email: "",
+      phone: "",
+      message: "",
+    },
+    isValid: {
+      fullName: true,
+      email: true,
+      phone: true,
+      message: true,
+    },
+    showModal:false
+  };
+  const [form, dispatchForm] = useReducer(formReducer, initialForm);
+  //CONTANCT PAGE DECLARATION.......................................
 
   const fetchData = async (url, key) => {
     try {
@@ -105,20 +178,17 @@ function App() {
       fetchData(url, "categoriesData");
     }
   }, []);
-  
+
   useEffect(() => {
     localStorage.setItem("categories", JSON.stringify(mealData.categoriesData));
     localStorage.setItem("categoryList", JSON.stringify(mealData.categoryList));
     localStorage.setItem("favorites", JSON.stringify(mealData.favorites));
-  }, [
-    
-    mealData.categoriesData,
-    mealData.categoryList,
-    mealData.favorites,
-  ]);
+  }, [mealData.categoriesData, mealData.categoryList, mealData.favorites]);
   return (
     <ThemeAppContext.Provider value={{ isDark, setDark }}>
-      <DataContext.Provider value={{ mealData, fetchData, dispatchMeal }}>
+      <DataContext.Provider
+        value={{ mealData, fetchData, dispatchMeal, form, dispatchForm }}
+      >
         <main className={`outer-container `}>
           <Navbar />
           <Routes>
@@ -132,7 +202,6 @@ function App() {
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
-          
         </main>
       </DataContext.Provider>
     </ThemeAppContext.Provider>
