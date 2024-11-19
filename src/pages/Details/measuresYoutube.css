@@ -3,31 +3,30 @@
     width: 100%;
     background-color: var(--dark-olive);
     border: 1px solid var(--faded-gray);
-    padding: 3rem 2.5rem;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
+    padding: 3rem 1.5rem;
+   
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    place-items: self-start;
     border-radius: 1.2rem;
     gap: 2rem;
     position: relative;
     justify-content: center ;
     z-index: 5;
 }
-.measures-wrapper.grid{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    place-items: self-start;
-}
+
 .measures-title{
     font-size: clamp(4rem, 5vw, 7rem);
     grid-column: span 2;
 
 }
 .measure-item{
-    padding-top: 1.5rem;
+    padding-top: .5rem;
     display: flex;
     align-items: center;
     gap: .8rem;
+    font-size: 1.45rem;
+    font-weight: 400;
 }
 .check-wrapper{
     min-width: 2.5rem;
@@ -43,18 +42,18 @@
 
 .checklist-img{
     position: absolute;
-    right: 2rem;
+    top: -1.5rem;
+    scale: 0.6;
+    right: 0;
     display: flex;
     align-self: center;
     z-index: -1;
-    opacity: 0.8;
+    opacity: 0.6;
+    max-width: 20rem;
+    width: 100%;
 
 }
-.checklist-img.grid{
-    top: -1rem;
-    scale: 0.7;
-    right: 0;
-}
+
 
 
 .yt-video-wrapper {

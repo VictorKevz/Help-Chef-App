@@ -25,7 +25,7 @@ function MainCategory() {
       </header>
       <div className={`mainCategory-container ${!isDark && "light-body-bg"}`}>
         <div className="main-category-filters">
-          <div className="breadcrumbs-wrapper">
+          <div className="breadcrumbs-wrapper main">
             <Link to="/" className={`breadcrumb ${!isDark && "light-text"}`}>
               Home
             </Link>
@@ -41,7 +41,7 @@ function MainCategory() {
               onChange={(e) => {
                 setQuery(e.target.value.toLowerCase());
               }}
-              className="mainCategory-input"
+              className={`mainCategory-input ${!isDark && "light-input"}`}
               placeholder="Search categories by name..."
             />
             </label>

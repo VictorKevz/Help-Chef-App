@@ -1,10 +1,10 @@
 .singleCategory-wrapper {
-  padding: 0 3.5%;
+  padding: 5rem 3.5%;
   overflow-x: hidden;
   background-color: var(--dark-green);
 }
-.breadcrumbs-wrapper {
-  margin-top: 3rem;
+.breadcrumbs-wrapper.single {
+  
 
   align-self: flex-start;
 }

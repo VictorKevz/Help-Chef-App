@@ -7,7 +7,7 @@
 }
 .instructions-header {
   border-radius: 1.2rem 1.2rem 0 0;
-  padding: 3rem 2.5rem;
+  padding: 3rem 1.5rem;
   position: relative;
   z-index: 5;
   width: 100%;
@@ -40,7 +40,7 @@
   justify-content: center;
 }
 .steps-wrapper {
-  padding: 3rem 2.5rem;
+  padding: 3rem 1.5rem;
   border-top: 1px solid var(--faded-gray);
   display: flex;
   flex-direction: column;

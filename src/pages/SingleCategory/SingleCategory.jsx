@@ -43,7 +43,7 @@ const sentencesLength = sentences.length;
   }
   return (
     <section className={`singleCategory-wrapper wrapper ${!isDark && "light-body-bg"}`}>
-      <div className="breadcrumbs-wrapper">
+      <div className="breadcrumbs-wrapper single">
         {breadcrumbs.map((link) => {
           const isCurrent = link.text === categoryName;
           return (
