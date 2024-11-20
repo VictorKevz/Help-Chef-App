@@ -3,15 +3,32 @@ import { DataContext, ThemeAppContext } from "../../App";
 import "../../styles/mainCategory.css";
 import { Link } from "react-router-dom";
 import { ArrowForwardIos, Search } from "@mui/icons-material";
+import SearchComponent from "../../components/Search/Search";
+import { p } from "framer-motion/client";
 
 function MainCategory() {
-  const [query, setQuery] = useState("");
-  const { mealData } = useContext(DataContext);
+  const { mealData, search } = useContext(DataContext);
   const { isDark } = useContext(ThemeAppContext);
 
-  const filteredData = mealData?.categoriesData.filter((category)=>category?.strCategory.toLowerCase().includes(query))
+  const filteredData = mealData?.categoriesData.filter((category) =>
+    category?.strCategory
+      .toLowerCase()
+      .includes(search.capturedQuery.toLowerCase())
+  );
+  const dataToShow =
+    search.capturedQuery.trim() === ""
+      ? mealData?.categoriesData
+      : filteredData;
+  if (mealData?.isLoading) {
+    return <p>Loading....</p>;
+  }
+  if (mealData?.error) {
+    return <p>An error occurred{mealData?.error}</p>;
+  }
   return (
-    <section className={`main-category-wrapper wrapper ${!isDark && "light-body-bg"}`}>
+    <section
+      className={`main-category-wrapper wrapper ${!isDark && "light-body-bg"}`}
+    >
       <header className="mainCategory-bg">
         <div className="mainCategoryText">
           <h1 className="categories-title">Explore Our Categories</h1>
@@ -24,7 +41,7 @@ function MainCategory() {
         {/* <div className="overlay"></div> */}
       </header>
       <div className={`mainCategory-container ${!isDark && "light-body-bg"}`}>
-        <div className="main-category-filters">
+        <div className="breadcrumbs-search-wrapper">
           <div className="breadcrumbs-wrapper main">
             <Link to="/" className={`breadcrumb ${!isDark && "light-text"}`}>
               Home
@@ -32,27 +49,11 @@ function MainCategory() {
             <ArrowForwardIos className={`${!isDark && "light-text"}`} />
             <p className="categories">Categories</p>
           </div>
-          <fieldset className="mainCategory-field">
-            <label htmlFor="mainC-search" className="mainCategory-label">
-            <input
-              type="text"
-              id="mainC-search"
-              value={query}
-              onChange={(e) => {
-                setQuery(e.target.value.toLowerCase());
-              }}
-              className={`mainCategory-input ${!isDark && "light-input"}`}
-              placeholder="Search categories by name..."
-            />
-            </label>
-            <span className="search-icon-wrapper">
-              <Search fontSize="large" className="search-icon"/>
-            </span>
-          </fieldset>
+          <SearchComponent />
         </div>
         <div className={`inner-main-category`}>
           <div className="main-categories-grid">
-            {filteredData?.map((category) => {
+            {dataToShow?.map((category) => {
               return (
                 <Link
                   to={`/categories/${category?.strCategory}`}

@@ -32,11 +32,7 @@ function MealCard({ data }) {
         {itemsToDisplay?.map((meal, index) => {
           const isEven = index % 2 === 0;
           const isOdd = index % 2 === 1 && index % index === 0;
-          // const shouldSpanTwo =
-          //   index === itemsToDisplay.length - 1 &&
-          //   itemsToDisplay.length % 3 !== 0;
-          // ${shouldSpanTwo && "span-two-height"}
-          // ${shouldSpanTwo && "span-two"}
+          
           return (
             <div key={meal?.idMeal} className={`mealCard ${!isDark && "light-cards-bg"}`}>
               <header

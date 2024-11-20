@@ -62,7 +62,7 @@
     font-size: clamp(2.5rem,3vw,4.5rem);
 
 }
-.search-input{
+/* .search-input{
     height: 5.6rem;
     border-radius: .64rem;
     border: none;
@@ -72,10 +72,10 @@
     color: var(--white-2);
     font-size: 1.6rem;
     padding: 0 1rem 0 1.6rem;
-}
-.search-input::placeholder{
+} */
+/* .search-input::placeholder{
     color: var(--white-2);
-}
+} */
 .bot-img{
     width: 10rem;
     height: auto;

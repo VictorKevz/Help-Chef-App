@@ -3,11 +3,7 @@
   overflow-x: hidden;
   background-color: var(--dark-green);
 }
-.breadcrumbs-wrapper.single {
-  
 
-  align-self: flex-start;
-}
 .disabled {
   color: rgba(136, 133, 133, 0.875)!important;
 }

@@ -69,22 +69,22 @@ const formReducer = (state, action) => {
     case "VALIDATE_FORM":
       return {
         ...state,
-        isValid: { 
+        isValid: {
           ...state.isValid,
-          ...action.newValid
-         },
+          ...action.newValid,
+        },
       };
     case "SHOW_MODAL":
-      return{
+      return {
         ...state,
-        showModal:true
-      }
-      case "CLOSE_MODAL":
-      return{
+        showModal: true,
+      };
+    case "CLOSE_MODAL":
+      return {
         ...state,
-        showModal:false
-      }
-     case "CLEAR_FORM":
+        showModal: false,
+      };
+    case "CLEAR_FORM":
       return {
         formData: {
           fullName: "",
@@ -98,8 +98,41 @@ const formReducer = (state, action) => {
           phone: true,
           message: true,
         },
-        showModal:false
-      } 
+        showModal: false,
+      };
+    default:
+      return state;
+  }
+};
+
+const searchReducer = (state, action) => {
+  switch (action.type) {
+    case "UPDATE_QUERY":
+      const { value } = action.payload;
+      return {
+        ...state,
+        query: value.toLowerCase(),
+        queryValid:true
+      };
+    case "CAPTURE_QUERY":
+      return {
+        ...state,
+        capturedQuery: action.payload.query,
+       
+      };
+      case "SHOW_ERROR":
+        return {
+          ...state,
+          queryValid:false
+        };
+      case "CLEAR_SEARCH":
+      return {
+        ...state,
+        capturedQuery: "",
+        query:"",
+        queryValid:true
+      };
+
     default:
       return state;
   }
@@ -119,9 +152,10 @@ function App() {
     isLoading: true,
     error: "",
     favorites: JSON.parse(localStorage.getItem("favorites")) || [],
+   
   };
   const [mealData, dispatchMeal] = useReducer(mealReducer, initialData);
-  //MEAL DATA DECLAARATION.......................................
+  //MEAL DATA DECLARATION.......................................
 
   //CONTANCT PAGE DECLARATION.......................................
   const initialForm = {
@@ -137,11 +171,18 @@ function App() {
       phone: true,
       message: true,
     },
-    showModal:false
+    showModal: false,
   };
   const [form, dispatchForm] = useReducer(formReducer, initialForm);
   //CONTANCT PAGE DECLARATION.......................................
 
+  const searchInitial = {
+    query: "",
+    capturedQuery: "",
+    queryValid:true
+  };
+  const [search, dispatchSearch] = useReducer(searchReducer, searchInitial);
+  // DYNAMIC REUSABLE FUNCTION FOR DATA FETCHING......................
   const fetchData = async (url, key) => {
     try {
       const res = await fetch(url);
@@ -172,6 +213,8 @@ function App() {
       dispatchMeal({ type: "LOADING_OFF" });
     }
   };
+  // DYNAMIC REUSABLE FUNCTION FOR DATA FETCHING....................
+
   useEffect(() => {
     const url = "https://www.themealdb.com/api/json/v1/1/categories.php";
     if (mealData?.categoriesData.length === 0) {
@@ -184,10 +227,19 @@ function App() {
     localStorage.setItem("categoryList", JSON.stringify(mealData.categoryList));
     localStorage.setItem("favorites", JSON.stringify(mealData.favorites));
   }, [mealData.categoriesData, mealData.categoryList, mealData.favorites]);
+
   return (
     <ThemeAppContext.Provider value={{ isDark, setDark }}>
       <DataContext.Provider
-        value={{ mealData, fetchData, dispatchMeal, form, dispatchForm }}
+        value={{
+          mealData,
+          fetchData,
+          dispatchMeal,
+          form,
+          dispatchForm,
+          dispatchSearch,
+          search,
+        }}
       >
         <main className={`outer-container `}>
           <Navbar />

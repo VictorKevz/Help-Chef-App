@@ -60,7 +60,7 @@
 
 .light-input{
     border-color: #56525291;
-    color: var(--very-dark-green);
+    color: var(--very-dark-green)!important;
 }
 
 .error-message{
@@ -71,7 +71,7 @@
     padding-left: 1.6rem;
 }
 .error-border{
-    border-color: var(--red);
+    border-color: var(--red)!important;
 }
 .form-input:focus,.form-message:focus{
     border: 1px solid var(--aqua);

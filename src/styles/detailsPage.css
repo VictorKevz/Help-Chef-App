@@ -153,11 +153,18 @@
 @media (width <= 510px) {
   
    .measures-wrapper{
-    grid-template-columns: repeat(1,1fr)!important;
+    grid-template-columns: 1fr!important;
 
    }
    .measures-title{
     grid-column: span 1!important;
 
+   }
+   .checklist-img{
+    top: 40%!important;
+    right: -2rem;
+   }
+   .breadcrumb{
+    font-size: 1.35rem!important;
    }
 }
