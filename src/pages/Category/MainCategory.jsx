@@ -2,9 +2,8 @@ import React, { useContext, useState } from "react";
 import { DataContext, ThemeAppContext } from "../../App";
 import "../../styles/mainCategory.css";
 import { Link } from "react-router-dom";
-import { ArrowForwardIos, Search } from "@mui/icons-material";
-import SearchComponent from "../../components/Search/Search";
-import { p } from "framer-motion/client";
+import { ArrowForwardIos } from "@mui/icons-material";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 function MainCategory() {
   const { mealData, search } = useContext(DataContext);
@@ -19,9 +18,10 @@ function MainCategory() {
     search.capturedQuery.trim() === ""
       ? mealData?.categoriesData
       : filteredData;
-  if (mealData?.isLoading) {
-    return <p>Loading....</p>;
-  }
+
+      if (!mealData?.categoriesData || mealData?.categoriesData.length === 0) {
+        return <p>Loading...</p>;
+      }
   if (mealData?.error) {
     return <p>An error occurred{mealData?.error}</p>;
   }
@@ -38,7 +38,6 @@ function MainCategory() {
             any occasion.
           </p>
         </div>
-        {/* <div className="overlay"></div> */}
       </header>
       <div className={`mainCategory-container ${!isDark && "light-body-bg"}`}>
         <div className="breadcrumbs-search-wrapper">
@@ -49,7 +48,7 @@ function MainCategory() {
             <ArrowForwardIos className={`${!isDark && "light-text"}`} />
             <p className="categories">Categories</p>
           </div>
-          <SearchComponent />
+          <SearchBar />
         </div>
         <div className={`inner-main-category`}>
           <div className="main-categories-grid">

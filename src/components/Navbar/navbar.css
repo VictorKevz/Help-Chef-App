@@ -46,7 +46,9 @@
 .nav-link {
   width: fit-content;
   z-index: 5;
+  position: relative;
 }
+
 .themeSwitch-contanct-wrapper {
   display: flex;
   align-items: center;
@@ -60,8 +62,8 @@
 
   border-radius: 50%;
   font-size: 1.5rem;
-  height: 5rem;
-  width: 5rem;
+  height: 3rem;
+  width: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,18 +76,19 @@
   position: absolute;
   top: -1rem;
   right: -.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   background-color: var(--red);
   color: var(--white);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  padding: .2rem 0;
 }
-.menu-icon,.heart-icon {
+.menu-icon {
   scale: 1.5;
 }
 .toggle-menu-btn,.mask
@@ -93,13 +96,11 @@
   display: none;
 }
 
-/* .nav-link:hover,
-.active {
-  background-color: var(--olive);
-  border-color: var(--olive);
+.nav-link:hover {
+  
   transition: 0.3s ease-in-out;
-  color: var(--white);
-} */
+  color: var(--teal-green);
+}
 
 .light-nav-bg{
   background-color: var(--white-2);
@@ -111,11 +112,14 @@
   .header-wrapper {
     max-width: 960px;
     width: 100%;
+
   }
   .nav-wrapper {
     gap: 1.3rem;
+    
   }
   .links-wrapper {
+    
     flex-direction: column;
     position: absolute;
     top: 100%;
@@ -125,6 +129,8 @@
   }
   .nav-link {
     font-size: 2.5rem;
+    font-weight: 400!important;
+
   }
 
   .toggle-menu-btn {
@@ -165,7 +171,7 @@
   }
   .inner-mask{
     position: fixed;
-    width: 75vw;
+    width: 100vw;
     height: 100vh;
     left: 0;
     top: 0;
@@ -175,11 +181,23 @@
   .show {
     display: flex;
   }
-  /* .light-mask-bg{
-    background-color: rgba(5, 6, 5, 0.187);
-  } */
+  
   .light-inner-mask-bg{
    background-color: var(--white); 
+  }
+  .dropdown-wrapper{
+    
+    grid-template-columns: 1fr 1fr!important;
+    background: none!important;
+    border: none!important;
+    box-shadow: none!important;
+    padding: 0!important;
+    gap: 4rem!important;
+    width: 100%!important;
+  }
+  .category-link{
+    font-size: 2rem!important;
+    font-weight: 400!important;
   }
 }
 

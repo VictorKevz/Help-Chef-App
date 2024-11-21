@@ -8,6 +8,7 @@ import SingleCategory from "./pages/SingleCategory/SingleCategory";
 import Favorites from "./pages/Favorites/Favorites";
 import DetailsPage from "./pages/Details/DetailsPage";
 import Contact from "./pages/Contact/Contact";
+import Footer from "./components/Footer/Footer";
 export const ThemeAppContext = createContext();
 export const DataContext = createContext();
 
@@ -112,25 +113,24 @@ const searchReducer = (state, action) => {
       return {
         ...state,
         query: value.toLowerCase(),
-        queryValid:true
+        queryValid: true,
       };
     case "CAPTURE_QUERY":
       return {
         ...state,
         capturedQuery: action.payload.query,
-       
       };
-      case "SHOW_ERROR":
-        return {
-          ...state,
-          queryValid:false
-        };
-      case "CLEAR_SEARCH":
+    case "SHOW_ERROR":
+      return {
+        ...state,
+        queryValid: false,
+      };
+    case "CLEAR_SEARCH":
       return {
         ...state,
         capturedQuery: "",
-        query:"",
-        queryValid:true
+        query: "",
+        queryValid: true,
       };
 
     default:
@@ -152,7 +152,7 @@ function App() {
     isLoading: true,
     error: "",
     favorites: JSON.parse(localStorage.getItem("favorites")) || [],
-   
+    searchResults: [],
   };
   const [mealData, dispatchMeal] = useReducer(mealReducer, initialData);
   //MEAL DATA DECLARATION.......................................
@@ -179,7 +179,7 @@ function App() {
   const searchInitial = {
     query: "",
     capturedQuery: "",
-    queryValid:true
+    queryValid: true,
   };
   const [search, dispatchSearch] = useReducer(searchReducer, searchInitial);
   // DYNAMIC REUSABLE FUNCTION FOR DATA FETCHING......................
@@ -201,7 +201,9 @@ function App() {
       ) {
         formattedData = data.meals;
       }
-
+      if (key === "searchResults") {
+        formattedData = data;
+      }
       dispatchMeal({
         type: "UPDATE_DATA",
         payload: { key, data: formattedData },
@@ -224,9 +226,8 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("categories", JSON.stringify(mealData.categoriesData));
-    localStorage.setItem("categoryList", JSON.stringify(mealData.categoryList));
     localStorage.setItem("favorites", JSON.stringify(mealData.favorites));
-  }, [mealData.categoriesData, mealData.categoryList, mealData.favorites]);
+  }, [mealData.categoriesData, mealData.favorites]);
 
   return (
     <ThemeAppContext.Provider value={{ isDark, setDark }}>
@@ -254,6 +255,7 @@ function App() {
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
+          <Footer/>
         </main>
       </DataContext.Provider>
     </ThemeAppContext.Provider>

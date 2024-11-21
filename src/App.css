@@ -31,7 +31,7 @@
   color: var(--very-dark-green);
 }
 /* Customize the scrollbar container */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 12px !important;
   background-color: #0c2518;
 }
@@ -40,4 +40,4 @@
   border-radius: 10px;
   height: 50px !important; 
 
-}
+} */

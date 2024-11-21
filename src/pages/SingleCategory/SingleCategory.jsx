@@ -4,7 +4,7 @@ import { DataContext, ThemeAppContext } from "../../App";
 import "../../styles/singleCategory.css";
 import { ArrowForwardIos } from "@mui/icons-material";
 import MealCard from "../../components/MealCard/MealCard";
-import SearchComponent from "../../components/Search/Search";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 function SingleCategory() {
   const [isLimited, setLimited] = useState(true);
@@ -13,7 +13,7 @@ function SingleCategory() {
   const { isDark } = useContext(ThemeAppContext);
 
   const dynamicCategoryObj = mealData?.categoriesData.find(
-    (obj) => obj?.strCategory.trim() === categoryName.trim()
+    (obj) => obj?.strCategory?.trim() === categoryName.trim()
   );
   useEffect(() => {
     const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoryName}`;
@@ -80,7 +80,7 @@ function SingleCategory() {
             );
           })}
         </div>
-        <SearchComponent/>
+        <SearchBar/>
       </div>
       <header
         className={`singleCategory-header-wrapper ${

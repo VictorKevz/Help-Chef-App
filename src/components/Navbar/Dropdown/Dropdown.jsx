@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from "react";
-import { DataContext } from "../../../App";
+import { DataContext, ThemeAppContext } from "../../../App";
 import { NavLink } from "react-router-dom";
 import "./dropdown.css";
 function Dropdown({ setDropDown,setOpen }) {
   const { mealData, fetchData } = useContext(DataContext);
+  const { isDark } = useContext(ThemeAppContext);
 
 const handleDropDown = () => {
   setDropDown(false)
@@ -17,10 +18,13 @@ const handleDropDown = () => {
       fetchData(url, "categoryList");
     }
   }, []);
+  useEffect(() => {
+    localStorage.setItem("categoryList", JSON.stringify(mealData?.categoryList));
+  }, [ mealData?.categoryList]);
   return (
-    <ul className="dropdown-wrapper"onClick={handleDropDown}>
+    <ul className={`dropdown-wrapper ${!isDark && "light-cards-bg"}`} onClick={handleDropDown}>
       <li className="category-item" >
-        <NavLink to="/categories" className="category-link">
+        <NavLink to="/categories" className={`category-link ${!isDark && "light-text"}`}>
           All
         </NavLink>
       </li>
@@ -33,7 +37,7 @@ const handleDropDown = () => {
           >
             <NavLink
               to={`/categories/${link.strCategory}`}
-              className="category-link"
+              className={`category-link ${!isDark && "light-text"}`}
             >
               {link.strCategory}
             </NavLink>

@@ -1,10 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { DataContext, ThemeAppContext } from "../../App";
 import { Close, Search } from "@mui/icons-material";
 import "./search.css";
-function SearchComponent() {
+import { useLocation } from "react-router-dom";
+
+function SearchBar() {
   const { search, dispatchSearch } = useContext(DataContext);
   const { isDark } = useContext(ThemeAppContext);
+
   const handleQuerySubmit = (e) => {
     e.preventDefault();
     if (search.query.trim() && search.query.length > 3) {
@@ -17,6 +20,16 @@ function SearchComponent() {
       return;
     }
   };
+
+  
+
+  // Reset search state when the location changes
+  const location = useLocation();
+  useEffect(() => {
+    dispatchSearch({ type: 'CLEAR_SEARCH' });
+  }, [location]);
+  // Reset search state when the location changes
+
   return (
     <form className="search-form" onSubmit={handleQuerySubmit}>
       <fieldset className="search-field">
@@ -53,4 +66,4 @@ function SearchComponent() {
   );
 }
 
-export default SearchComponent;
+export default SearchBar;

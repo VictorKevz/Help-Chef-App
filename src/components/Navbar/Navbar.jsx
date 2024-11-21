@@ -31,14 +31,14 @@ function Navbar() {
       setOpen(false);
     }
   };
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-    return () => (document.body.style.overflow = "auto");
-  }, [isOpen]);
+  // useEffect(() => {
+  //   if (isOpen) {
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     document.body.style.overflow = "auto";
+  //   }
+  //   return () => (document.body.style.overflow = "auto");
+  // }, [isOpen]);
   
   const favoritesCount = mealData?.favorites?.length;
   return (
@@ -72,7 +72,7 @@ function Navbar() {
                 <NavLink
                   to={link.path}
                   className={`nav-link ${!isDark && "light-text"}`}
-                  activeClassName="active"
+                  
                 >
                   {link.text}
                   {isCategory && (

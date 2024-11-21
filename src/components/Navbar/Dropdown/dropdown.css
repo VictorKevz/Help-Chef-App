@@ -14,3 +14,12 @@
     border-radius: 1.2rem;
 
 }
+.category-link{
+    font-size: 1.65rem;
+}
+.category-link:hover {
+  
+    transition: 0.3s ease-in-out;
+    color: var(--teal-green)!important;
+    
+  }
