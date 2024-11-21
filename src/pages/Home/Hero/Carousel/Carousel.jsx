@@ -86,8 +86,8 @@ function Carousel() {
             );
           })}
         </div>
-        <img src={pattern} alt="" className="pattern-img top" />
-        <img src={pattern} alt="" className="pattern-img bottom" />
+        {/* <img src={pattern} alt="" className="pattern-img top" />
+        <img src={pattern} alt="" className="pattern-img bottom" /> */}
       </motion.section>
     </AnimatePresence>
   );
