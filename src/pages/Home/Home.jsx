@@ -8,7 +8,6 @@ function Home() {
     <section className='home-wrapper wrapper'>
       <Hero/>
       <Trending/>
-      <div className="fixed-bg"></div>
     </section>
   )
 }

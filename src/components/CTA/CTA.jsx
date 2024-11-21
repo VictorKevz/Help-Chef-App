@@ -7,7 +7,7 @@ function CTA() {
       <div className="cta-container">
       <div className="cta-text">
         <h2 className="cta-title">
-          Got Suggestions for Improving Our Recipe App?
+          Want to Improve Our Recipe App?
         </h2>
         <p className="cta-parag">
           We value your feedback! Share your ideas and help us create a better
@@ -15,8 +15,9 @@ function CTA() {
         </p>
       </div>
       <Link to={`/contact`} className="link cta">Contact Us</Link>
-      </div>
       <div className="overlay cta"></div>
+      </div>
+      
     </article>
   );
 }

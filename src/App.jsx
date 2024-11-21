@@ -47,6 +47,11 @@ const mealReducer = (state, action) => {
           favorites: [...state.favorites, { ...action.meal }],
         };
       }
+    case"CLEAR_RESULTS":
+    return{
+      ...state,
+      searchResults:[]
+    }  
     default:
       return state;
   }
@@ -256,6 +261,8 @@ function App() {
             <Route path="/contact" element={<Contact />} />
           </Routes>
           <Footer/>
+          <div className="fixed-bg"></div>
+
         </main>
       </DataContext.Provider>
     </ThemeAppContext.Provider>

@@ -1,34 +1,43 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect,useState } from "react";
 import { DataContext, ThemeAppContext } from "../../App";
 import { Close, Search } from "@mui/icons-material";
 import "./search.css";
 import { useLocation } from "react-router-dom";
 
-function SearchBar() {
-  const { search, dispatchSearch } = useContext(DataContext);
+function SearchBar({setCapturedQuery,placeholder}) {
+  const {  dispatchMeal } = useContext(DataContext);
   const { isDark } = useContext(ThemeAppContext);
+  const [query, setQuery] = useState("");
+  const [isValid, setValid] = useState(true);
 
+  const handleChange = (e) => {
+    setQuery(e.target.value)
+    setValid(true)
+  }
   const handleQuerySubmit = (e) => {
     e.preventDefault();
-    if (search.query.trim() && search.query.length > 3) {
-      dispatchSearch({
-        type: "CAPTURE_QUERY",
-        payload: { query: search.query },
-      });
+    if (query.trim() && query.length > 3) {
+      setCapturedQuery(query)
+      
     } else {
-      dispatchSearch({type:"SHOW_ERROR"})
+      setValid(false);
       return;
     }
   };
-
-  
-
+const clearSearch = () => {
+  setQuery("")
+  setCapturedQuery("")
+  setValid(true)
+  dispatchMeal({type:"CLEAR_RESULTS"})
+}
   // Reset search state when the location changes
   const location = useLocation();
   useEffect(() => {
-    dispatchSearch({ type: 'CLEAR_SEARCH' });
+    clearSearch()
   }, [location]);
   // Reset search state when the location changes
+
+  
 
   return (
     <form className="search-form" onSubmit={handleQuerySubmit}>
@@ -37,28 +46,30 @@ function SearchBar() {
           <input
             type="text"
             id="search"
-            value={search.query}
-            onChange={(e) => {
-              dispatchSearch({
-                type: "UPDATE_QUERY",
-                payload: { value: e.target.value },
-              });
-              
-            }}
-            className={`search-input ${!isDark && "light-input"} ${!search.queryValid && "error-border"}`}
-            placeholder="Search categories by name..."
+            value={query}
+            onChange={handleChange}
+            className={`search-input ${!isDark && "light-input"} ${
+              !isValid && "error-border"
+            }`}
+            placeholder={placeholder}
           />
-          
         </label>
-        {!search.queryValid && <span className="error-message search">Please provide a valid query</span>}
+        {!isValid && (
+          <span className="error-message search">
+            Please provide a valid query
+          </span>
+        )}
       </fieldset>
       <button
-            type="button"
-            onClick={() => dispatchSearch({ type: "CLEAR_SEARCH" })}
-            className={`search-clear-btn ${search.query && "show"}`}
-          >
-            <Close fontSize="large" className={`clear-icon ${!isDark && "light-text"}`} />
-          </button>
+        type="button"
+        onClick={clearSearch}
+        className={`search-clear-btn ${query && "show"}`}
+      >
+        <Close
+          fontSize="large"
+          className={`clear-icon ${!isDark && "light-text"}`}
+        />
+      </button>
       <button type="submit" className={`search-btn `}>
         <Search fontSize="large" className="search-icon" />
       </button>

@@ -33,11 +33,11 @@
   .search-btn {
     width: 7rem;
     height: 7rem;
-    background-color: var(--olive);
+    background-color: var(--aqua);
     border-radius: 50%;
     position: absolute;
     right: -1rem;
-    top: -.5rem;
+    top: -1rem;
 
     color: var(--white);
     
@@ -48,7 +48,7 @@
   }
   .search-clear-btn{
     position: absolute;
-    right: 7rem;
+    right: 6.5rem;
     top: 1.4rem;
     color: var(--white);
     opacity: 0;

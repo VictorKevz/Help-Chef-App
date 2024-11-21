@@ -45,9 +45,9 @@ function Footer() {
     { id: 4, icon: LinkedIn },
   ];
   return (
-    <section className="footer-wrapper wrapper">
+    <section className={`footer-wrapper wrapper ${!isDark && "light-body-bg"}`}>
       <CTA />
-      <div className="footer-container">
+      <div className={`footer-container ${!isDark && "light-text"}`}>
         <div className="logo-address-wrapper">
           <h2 className={`logo footer ${!isDark && "light-text"}`}>
             Help <span className="dot"></span> Chef<span className="dot"></span>
@@ -67,7 +67,9 @@ function Footer() {
           ))}
         </ul>
         <ul className="category-links-wrapper footer-links">
-          <li className="footer-link-heading">Top Categories</li>
+          <li>
+            <h3 className="footer-link-heading">Top Categories</h3>
+          </li>
           {filteredData?.slice(0, 4)?.map((link) => (
             <li key={link?.idCategory} className="footer-item ">
               <Link
@@ -91,19 +93,42 @@ function Footer() {
         <ul className="socials-links-wrapper footer-links">
           {socialLinks.map((link) => (
             <li key={link.id} className="footer-item">
-              <link.icon to={link.path} className="footer-link icon" />
+              <link.icon
+                to={link.path}
+                className="footer-link icon"
+                fontSize="large"
+              />
             </li>
           ))}
         </ul>
       </div>
       <div className="copyright">
-        <p className="author">
-          Designed & Coded <Favorite className="footer-heart-icon" /> by<a href="">Victor.Kevz</a>
+        <p className={`author ${!isDark && "light-text"}`}>
+          Designed & Developed <Favorite className="footer-heart-icon" /> by
+          <a
+            className="author-link"
+            href="https://github.com/VictorKevz"
+            target="_blank"
+          >
+            Victor.Kevz
+          </a>
         </p>
-        <a className="author">
-          <GitHub />
-        </a>
+        <ul className={`my-links ${!isDark && "light-text"}`}>
+          <li className="footer-link">
+            <a className="author" href="https://github.com/VictorKevz"
+            target="_blank">
+              <GitHub fontSize="large" />
+            </a>
+          </li>
+          <li className="footer-link">
+            <a className="author" href="https://github.com/VictorKevz"
+            target="_blank">
+              <LinkedIn fontSize="large"/>
+            </a>
+          </li>
+        </ul>
       </div>
+      
     </section>
   );
 }

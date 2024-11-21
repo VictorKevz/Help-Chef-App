@@ -6,16 +6,17 @@ import { ArrowForwardIos } from "@mui/icons-material";
 import SearchBar from "../../components/SearchBar/SearchBar";
 
 function MainCategory() {
-  const { mealData, search } = useContext(DataContext);
+  const { mealData} = useContext(DataContext);
+  const[capturedQuery,setCapturedQuery] = useState("")
   const { isDark } = useContext(ThemeAppContext);
 
   const filteredData = mealData?.categoriesData.filter((category) =>
     category?.strCategory
       .toLowerCase()
-      .includes(search.capturedQuery.toLowerCase())
+      .includes(capturedQuery?.toLowerCase())
   );
   const dataToShow =
-    search.capturedQuery.trim() === ""
+    capturedQuery?.trim() === ""
       ? mealData?.categoriesData
       : filteredData;
 
@@ -48,7 +49,7 @@ function MainCategory() {
             <ArrowForwardIos className={`${!isDark && "light-text"}`} />
             <p className="categories">Categories</p>
           </div>
-          <SearchBar />
+          <SearchBar setCapturedQuery={setCapturedQuery} placeholder={"Search recipes by category.."} />
         </div>
         <div className={`inner-main-category`}>
           <div className="main-categories-grid">

@@ -45,7 +45,16 @@ h1,h2,h3,h4,button,a{
   color: var(--white-2);
   /* overflow-y: auto; */
 }
-
+.fixed-bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: url("./assets/images/fixed-bg.svg")no-repeat center/cover;
+    
+  }
 button,
 a,
 li {
@@ -71,7 +80,7 @@ a {
 }
 p {
   font-size: 1.55rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.65;
 }
 fieldset,input {

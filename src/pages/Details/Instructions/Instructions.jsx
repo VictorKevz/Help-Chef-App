@@ -1,11 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./instructions.css";
 import { Add, Remove } from "@mui/icons-material";
 import { ThemeAppContext } from "../../../App";
+import { useLocation } from "react-router-dom";
 function Instructions({ data }) {
   const [stepsDone, setStepsDone] = useState([]);
   const [isClicked, setClicked] = useState(false);
-  const{isDark} = useContext(ThemeAppContext)
+  const { isDark } = useContext(ThemeAppContext);
 
   const updateStepsDone = (currentStepIndex) => {
     setStepsDone((prevSteps) => {
@@ -21,6 +22,10 @@ function Instructions({ data }) {
     .split("\r\n")
     .filter((step) => step.trim() !== "");
 
+  const location = useLocation();
+  useEffect(() => {
+    setStepsDone([]);
+  }, [location]);
   return (
     <div className={`instructions-wrapper ${!isDark && "light-cards-bg"}`}>
       <header className={`instructions-header `}>
@@ -52,7 +57,10 @@ function Instructions({ data }) {
           const isDone = stepsDone.includes(i);
           return (
             <li key={i} className="step" onClick={() => updateStepsDone(i)}>
-              <button type="button" className={`step-num ${isDone && "marked"}`}>
+              <button
+                type="button"
+                className={`step-num ${isDone && "marked"}`}
+              >
                 {i + 1}
               </button>
               <p className={`step-parag ${isDone && "done"}`}>{step}</p>

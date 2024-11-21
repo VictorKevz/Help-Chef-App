@@ -1,5 +1,23 @@
 .searchSection-wrapper{
-    max-width: 720px;
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end!important;
+    align-items: flex-end;
+    padding: 3rem 2.5rem;
+    
+
+}
+.searched{
+    background-color: var(--very-dark-green);
+    border-radius: 1.8rem;
+}
+.searched-light{
+    background-color: var(--white);
+}
+.searchSection-inner-container{
+    
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -7,9 +25,8 @@
     align-items: flex-start;
     padding: 3rem 2rem;
     background-color: var(--dark-green);
-    border: 2px solid var(--teal-green);
-    border-radius: 1.2rem;
-
+    border: 1px solid var(--teal-green);
+    border-radius: 1.2rem;   
 }
 .searchSection-header{
     width: 100%;
@@ -23,7 +40,7 @@
 .searchSection-text{
     display: flex;
     flex-direction: column;
-    max-width: 560px;
+    max-width: 470px;
 }
 
 .search-instructions{
@@ -38,14 +55,12 @@
 }
 
 .searchSection-title{
-    font-size: clamp(3rem,5vw,4rem);
+    font-size: clamp(3rem,5vw,4.5rem);
 }
-.sub-title{
-    display: block;
-    color: var(--sage-green);
-    font-weight: 800;
-    font-size: clamp(2.5rem,3vw,4.5rem);
-
+.searchSection-parag{
+    max-width: 300px;
+    width: 90%;
+    
 }
 
 .search-img{
@@ -53,6 +68,56 @@
     width: 100%;
 }
 
+/* RESULTS STYLING....... */
+.searchSection-results{
+   
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    place-items: center;
+    gap: 3rem;
+    margin-top: 5rem;
+
+}
+.result-card{
+    /* width: 100%; */
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: var(--teal-green);
+    border-radius: 1.2rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.622);
+    padding-bottom: 2rem;
+}
+.result-bg{
+    width: 100%;
+    min-height: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 1.2rem 1.2rem 0 0;
+
+}
+.result-text{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+}
+.result-title{
+    font-size: 1.5rem;
+}
+
+.result-btn{
+    width: 4rem;
+    height: 4rem;
+    background-color: var(--white);
+    border-radius: 1.5rem;
+    color: var(--aqua);
+    margin-top: 1.5rem;
+}
 @media (width <=670px) {
     .searchSection-header {
         flex-direction: column-reverse;

@@ -8,8 +8,10 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 
 function SingleCategory() {
   const [isLimited, setLimited] = useState(true);
+  const [capturedQuery, setCapturedQuery] = useState("");
+
   const { categoryName } = useParams();
-  const { mealData, fetchData,search } = useContext(DataContext);
+  const { mealData, fetchData } = useContext(DataContext);
   const { isDark } = useContext(ThemeAppContext);
 
   const dynamicCategoryObj = mealData?.categoriesData.find(
@@ -25,15 +27,13 @@ function SingleCategory() {
     { id: 2, path: "/categories", text: "Categories" },
     { id: 3, path: `/categories/${categoryName}`, text: categoryName },
   ];
-  
+
   const filteredData = mealData?.singleCategoryData.filter((item) =>
-    item?.strMeal?.toLowerCase()?.includes(search.capturedQuery?.toLowerCase())
+    item?.strMeal?.toLowerCase()?.includes(capturedQuery?.toLowerCase())
   );
 
   const dataToShow =
-    search.capturedQuery.trim() === ""
-      ? mealData?.singleCategoryData
-      : filteredData;
+    capturedQuery?.trim() === "" ? mealData?.singleCategoryData : filteredData;
   //  Manipulating Text ....................................
   const parag = dynamicCategoryObj?.strCategoryDescription?.replace(
     /\[\d+\]/g,
@@ -80,7 +80,7 @@ function SingleCategory() {
             );
           })}
         </div>
-        <SearchBar/>
+        <SearchBar setCapturedQuery={setCapturedQuery} placeholder={"Search recipes by name.."} />
       </div>
       <header
         className={`singleCategory-header-wrapper ${

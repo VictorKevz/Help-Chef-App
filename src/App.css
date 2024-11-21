@@ -4,9 +4,14 @@
   align-items: center !important;
   justify-content: center !important;
   flex-direction: column!important;
+  /* padding-bottom: 5vh; */
 
 }
-
+.link:hover{
+  opacity: 0.8!important;
+  scale:1.1!important;
+  transition: .3s ease-in-out;
+}
 .light-body-bg {
   background-color: var(--white)!important;
 }
@@ -30,14 +35,4 @@
   border-color: 1px solid darkgray!important;
   color: var(--very-dark-green);
 }
-/* Customize the scrollbar container */
-/* ::-webkit-scrollbar {
-  width: 12px !important;
-  background-color: #0c2518;
-}
-::-webkit-scrollbar-thumb {
-  background-color: #61ad85;
-  border-radius: 10px;
-  height: 50px !important; 
 
-} */
