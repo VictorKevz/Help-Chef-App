@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { useLocation, useParams } from "react-router-dom";
 import { DataContext, ThemeAppContext } from "../../App";
 import "../../styles/searchedRecipe.css";
 import checklist from "../../assets/images/checklist.svg";
 import { Check } from "@mui/icons-material";
+import { sideVariants } from "../../variants";
 function SearchedRecipe() {
   const [stepsDone, setStepsDone] = useState([]);
   const [isClicked, setClicked] = useState(false);
@@ -43,8 +45,17 @@ function SearchedRecipe() {
   const plainText = summary?.replace(/<\/?b>/g, "");
   const finalSummary = plainText?.split(".").slice(0, 5).join(".");
   return (
-    <section className={`searchedRecipe-wrapper wrapper ${!isDark && "light-body-bg"}`}>
-      <header className={`detailsPage-header `}>
+    <section
+      className={`searchedRecipe-wrapper wrapper ${!isDark && "light-body-bg"}`}
+    >
+      <motion.header
+        className={`detailsPage-header `}
+        variants={sideVariants("right")}
+        initial="initial"
+        whileInView="animate"
+        exit="exit"
+        viewport={{ once: false, amount: 0.2 }}
+      >
         <div className="detailsPage-text-wrapper searchedRecipe">
           <ul className="dish-wrapper">
             {data?.dishTypes?.slice(0, 3)?.map((dish, i) => (
@@ -63,8 +74,10 @@ function SearchedRecipe() {
           />
         </div>
         <div className="overlay detailsPage"></div>
-      </header>
-      <p className={`recipe-parag ${!isDark && "light-text"}`}>{finalSummary}.</p>
+      </motion.header>
+      <p className={`recipe-parag ${!isDark && "light-text"}`}>
+        {finalSummary}.
+      </p>
       {/* 
       .
       .
@@ -106,14 +119,21 @@ function SearchedRecipe() {
       .
       */}
       <div className="detailsPage-content-wrapper">
-        <section className={`instructions-wrapper ${!isDark && "light-cards-bg"}`}>
-        <header className={`instructions-header `}>
-        <h2 className="step-title">Instructions</h2>
-        <p className="instructions-parag">
-          Follow these simple instructions to get started!
-        </p>
-        <div className="overlay instructions"></div>
-        </header>
+        <motion.section
+          className={`instructions-wrapper ${!isDark && "light-cards-bg"}`}
+          variants={sideVariants("left")}
+          initial="initial"
+          whileInView="animate"
+          exit="exit"
+          viewport={{ once: false, amount: 0.2 }}
+        >
+          <header className={`instructions-header `}>
+            <h2 className="step-title">Instructions</h2>
+            <p className="instructions-parag">
+              Follow these simple instructions to get started!
+            </p>
+            <div className="overlay instructions"></div>
+          </header>
           <ul
             className={`steps-wrapper searchedRecipe ${
               !isDark && "light-text"
@@ -136,7 +156,7 @@ function SearchedRecipe() {
               );
             })}
           </ul>
-        </section>
+        </motion.section>
         {/* 
       .
       .
@@ -144,9 +164,16 @@ function SearchedRecipe() {
       .
       .
       */}
-        <section className="ingredients-section">
+        <motion.section 
+        className="ingredients-section"
+        variants={sideVariants("right")}
+          initial="initial"
+          whileInView="animate"
+          exit="exit"
+          viewport={{ once: false, amount: 0.2 }}
+        >
           <ul className={`measures-wrapper `}>
-          <h2 className="measures-title">Ingredients</h2>
+            <h2 className="measures-title">Ingredients</h2>
             <img src={checklist} alt="" className={`checklist-img `} />
             {data?.extendedIngredients?.map((item, i) => (
               <li key={i} className="measure-item">
@@ -157,7 +184,7 @@ function SearchedRecipe() {
               </li>
             ))}
           </ul>
-        </section>
+        </motion.section>
       </div>
     </section>
   );
