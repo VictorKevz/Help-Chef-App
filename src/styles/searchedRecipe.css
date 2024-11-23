@@ -1,6 +1,6 @@
 .searchedRecipe-wrapper {
   background-color: var(--dark-green);
-  padding: 5vh 3.5%;
+  padding: 5vh 3.5% 12vh 3.5%;
 }
 .detailsPage-text-wrapper.searchedRecipe {
   display: flex;
@@ -13,6 +13,7 @@
   align-items: center;
   gap: 0.5rem;
   margin-left: 0.6rem;
+  margin-top: 2rem;
 }
 .dish {
   font-size: 1.4rem;
@@ -43,15 +44,19 @@
   justify-content: center;
   flex-direction: column;
   margin-top: 7vh;
+  
 }
 .equip-title {
   font-size: clamp(3rem, 6vw, 7rem);
 }
 .equip-list {
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 3rem;
   margin-top: 4vh;
+  flex-wrap: wrap;
+  justify-content:center ;
   
 }
 .equip-item {
@@ -59,6 +64,9 @@
   align-items: center;
   justify-content: space-between;
   align-self: center;
+  flex-wrap: wrap;
+justify-content: center ;
+gap: 2rem;
 }
 .equip-details {
   display: flex;
@@ -75,33 +83,17 @@
   height: 8rem;
   border-radius: 1rem;
   background-color: var(--white);
-  margin-right: 1.5rem;
+  /* margin-right: 1.5rem; */
   padding: 0.5rem 1rem;
+  border: 1px solid var(--faded-gray);
 }
-/* 
-      .
-      .
-      Steps Section
-      .
-      .
-      */
-.steps-ingredients-wrapper {
-  max-width: 1440px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(500px,1fr));
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-block: 15vh 8vh;
-  gap: 5rem;
-}
+
 .step-title{
-    font-size: clamp(2.5rem,5vw,4rem);
+    font-size: clamp(2.5rem,5vw,5rem);
     margin-left: .8rem;
 }
-.steps-wrapper.searchedRecipe {
-  max-width: 720px!important;
-  background-color: var(--very-dark-green);
-  border: 1px solid var(--faded-gray);
-  border-radius: 1.2rem;
-  margin-top: 0;
+.ingredients-section{
+  max-width: 1440px;
+  width: 100%;
 }
+

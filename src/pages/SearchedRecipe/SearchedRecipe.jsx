@@ -43,8 +43,8 @@ function SearchedRecipe() {
   const plainText = summary?.replace(/<\/?b>/g, "");
   const finalSummary = plainText?.split(".").slice(0, 5).join(".");
   return (
-    <section className="searchedRecipe-wrapper wrapper">
-      <header className="detailsPage-header">
+    <section className={`searchedRecipe-wrapper wrapper ${!isDark && "light-body-bg"}`}>
+      <header className={`detailsPage-header `}>
         <div className="detailsPage-text-wrapper searchedRecipe">
           <ul className="dish-wrapper">
             {data?.dishTypes?.slice(0, 3)?.map((dish, i) => (
@@ -64,7 +64,7 @@ function SearchedRecipe() {
         </div>
         <div className="overlay detailsPage"></div>
       </header>
-      <p className="recipe-parag">{finalSummary}.</p>
+      <p className={`recipe-parag ${!isDark && "light-text"}`}>{finalSummary}.</p>
       {/* 
       .
       .
@@ -73,10 +73,10 @@ function SearchedRecipe() {
       .
       */}
 
-      <section className="equip-wrapper">
+      <section className={`equip-wrapper ${!isDark && "light-text"}`}>
         <h2 className="equip-title">Equipment</h2>
 
-        <ul className="equip-list">
+        <ul className={`equip-list `}>
           {data?.analyzedInstructions?.[0]?.steps
             ?.slice(0, 5)
             ?.filter((step) => step?.equipment?.length > 0) // Only include steps with equipment
@@ -89,7 +89,7 @@ function SearchedRecipe() {
                       alt={equipment?.localizedName}
                       className="equip-img"
                     />
-                    <span className="name">
+                    <span className={`name ${!isDark && "light-text"}`}>
                       {equipment?.localizedName.toUpperCase()}
                     </span>
                   </div>
@@ -101,13 +101,19 @@ function SearchedRecipe() {
       {/* 
       .
       .
-      Steps Section
+       Instructions Section
       .
       .
       */}
-      <div className="steps-ingredients-wrapper">
-        <section className="steps-section">
-          <h2 className="equip-title step-title">Instructions</h2>
+      <div className="detailsPage-content-wrapper">
+        <section className={`instructions-wrapper ${!isDark && "light-cards-bg"}`}>
+        <header className={`instructions-header `}>
+        <h2 className="step-title">Instructions</h2>
+        <p className="instructions-parag">
+          Follow these simple instructions to get started!
+        </p>
+        <div className="overlay instructions"></div>
+        </header>
           <ul
             className={`steps-wrapper searchedRecipe ${
               !isDark && "light-text"
@@ -139,8 +145,8 @@ function SearchedRecipe() {
       .
       */}
         <section className="ingredients-section">
-          <h2 className="equip-title step-title">Ingredients</h2>
           <ul className={`measures-wrapper `}>
+          <h2 className="measures-title">Ingredients</h2>
             <img src={checklist} alt="" className={`checklist-img `} />
             {data?.extendedIngredients?.map((item, i) => (
               <li key={i} className="measure-item">
