@@ -2,18 +2,20 @@ import React, { useContext, useEffect } from "react";
 import "../../styles/detailsPage.css";
 import { DataContext, ThemeAppContext } from "../../App";
 import { Link, useParams } from "react-router-dom";
+import {  motion } from "framer-motion";
+
 import {
   ArrowForwardIos,
   Category,
   Label,
   Language,
 } from "@mui/icons-material";
-import pattern from "../../assets/images/home/hero/pattern.svg";
 import Instructions from "./Instructions/Instructions";
 import YoutubeVideo from "./YoutubeVideo/YoutubeVideo";
 import Measures from "./Measures/Measures";
 import RelatedMeal from "./RelatedMeals/RelatedMeal";
 import AddFavoritesBtn from "../../components/AddFavoritesBtn/AddFavoritesBtn";
+import { sideVariants } from "../../variants";
 
 function DetailsPage() {
   const { mealData, fetchData } = useContext(DataContext);
@@ -64,7 +66,14 @@ function DetailsPage() {
       </div>
       <AddFavoritesBtn meal={dataObj}/>
       </div>
-      <header className="detailsPage-header">
+      <motion.header 
+      className="detailsPage-header"
+      variants={sideVariants("left")}
+      initial="initial"
+      whileInView="animate"
+      exit="exit"
+      viewport={{ once: false, amount: 0.2 }}
+      >
         <div className="detailsPage-text-wrapper">
           <p className="category">{dataObj?.strCategory}</p>
           <h1 className="detailsPage-title">{dataObj?.strMeal}</h1>
@@ -77,7 +86,7 @@ function DetailsPage() {
           />
         </div>
         <div className="overlay detailsPage"></div>
-      </header>
+      </motion.header>
       <ul className="tags-category-wrapper">
         <li className={`item ${!isDark && "light-text"}`}>
           <span className="icon-wrapper">
@@ -118,13 +127,27 @@ function DetailsPage() {
         )}
       </ul>
       <section className="detailsPage-content-wrapper">
-        <aside className="left-side">
+        <motion.aside 
+        className="left-side"
+        variants={sideVariants("left")}
+        initial="initial"
+        whileInView="animate"
+        exit="exit"
+        
+        viewport={{ once: false, amount: 0.2 }}
+        >
           <Instructions data={dataObj} />
-        </aside>
-        <aside className="right-side">
+        </motion.aside>
+        <motion.aside 
+        className="right-side"
+        variants={sideVariants("right")}
+        initial="initial"
+        whileInView="animate"
+        exit="exit"
+        >
           <Measures data={dataObj} />
           <YoutubeVideo url={dataObj?.strYoutube} />
-        </aside>
+        </motion.aside>
       </section>
       <RelatedMeal mealName={mealName}/>
       {/* <img src={pattern} alt="" className="pattern-img details" /> */}

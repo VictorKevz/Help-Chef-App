@@ -6,6 +6,7 @@ import {
   Close,
   FavoriteBorder,
   KeyboardArrowDown,
+  KeyboardArrowUp,
   Menu,
 } from "@mui/icons-material";
 import ThemeSwitch from "../ThemeSwitch/ThemeSwitch";
@@ -39,7 +40,7 @@ function Navbar() {
   //   }
   //   return () => (document.body.style.overflow = "auto");
   // }, [isOpen]);
-  
+
   const favoritesCount = mealData?.favorites?.length;
   return (
     <header className={`header-wrapper ${!isDark && "light-cards-bg"}`}>
@@ -72,11 +73,16 @@ function Navbar() {
                 <NavLink
                   to={link.path}
                   className={`nav-link ${!isDark && "light-text"}`}
-                  
                 >
                   {link.text}
-                  {isCategory && (
+                  {isCategory && !dropDownOpen && (
                     <KeyboardArrowDown
+                      className={`category-arrow`}
+                      fontSize="large"
+                    />
+                  )}
+                  {isCategory && dropDownOpen && (
+                    <KeyboardArrowUp
                       className={`category-arrow`}
                       fontSize="large"
                     />
@@ -86,7 +92,11 @@ function Navbar() {
             );
           })}
           {dropDownOpen && (
-            <Dropdown setDropDown={setDropDown} setOpen={setOpen} />
+            <Dropdown
+              dropDownOpen={dropDownOpen}
+              setDropDown={setDropDown}
+              setOpen={setOpen}
+            />
           )}
         </ul>
       </nav>

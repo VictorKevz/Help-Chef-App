@@ -8,9 +8,11 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding-top: 5vh;
+  text-align: center;
 }
 .favorites-title {
-  font-size: clamp(4rem, 8vw, 12rem);
+  font-size: clamp(4rem, 8vw, 10rem);
 }
 .favCount{
     font-weight: 400;

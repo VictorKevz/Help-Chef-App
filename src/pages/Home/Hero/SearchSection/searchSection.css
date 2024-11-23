@@ -42,10 +42,19 @@
     flex-direction: column;
     max-width: 470px;
 }
-
+.searchSection-title{
+    font-size: clamp(1.8rem,6vw,4.5rem);
+}
+.searchSection-parag{
+    max-width: 390px;
+    width: 100%;
+    margin-top: 1rem;
+    
+}
 .search-instructions{
     margin-top: 1.5rem;
     font-size: 1.4rem;
+    width: 100%;
 }
 .strong-text{
     font-weight: 800;
@@ -54,14 +63,8 @@
     display: block;
 }
 
-.searchSection-title{
-    font-size: clamp(3rem,5vw,4.5rem);
-}
-.searchSection-parag{
-    max-width: 300px;
-    width: 90%;
-    
-}
+
+
 
 .search-img{
     max-width: 12rem;

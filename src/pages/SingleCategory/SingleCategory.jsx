@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { motion } from "framer-motion";
 import { DataContext, ThemeAppContext } from "../../App";
 import "../../styles/singleCategory.css";
 import { ArrowForwardIos } from "@mui/icons-material";
 import MealCard from "../../components/MealCard/MealCard";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import { verticalVariants } from "../../variants";
 
 function SingleCategory() {
   const [isLimited, setLimited] = useState(true);
@@ -58,7 +60,14 @@ function SingleCategory() {
     <section
       className={`singleCategory-wrapper wrapper ${!isDark && "light-body-bg"}`}
     >
-      <div className="breadcrumbs-search-wrapper">
+      <motion.div 
+      className="breadcrumbs-search-wrapper"
+      variants={verticalVariants("bottom")}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true, amount: 0.1 }}
+      exit="exit"
+      >
         <div className="breadcrumbs-wrapper single">
           {breadcrumbs.map((link) => {
             const isCurrent = link.text === categoryName;
@@ -80,12 +89,24 @@ function SingleCategory() {
             );
           })}
         </div>
-        <SearchBar setCapturedQuery={setCapturedQuery} placeholder={"Search recipes by name.."} />
-      </div>
-      <header
+        <div className="searchBar-wrapper">
+          <SearchBar
+            setCapturedQuery={setCapturedQuery}
+            placeholder={"Search recipes by name.."}
+          />
+        </div>
+      </motion.div>
+      
+      <motion.header
         className={`singleCategory-header-wrapper ${
           !isDark && "light-cards-bg"
         }`}
+        key={categoryName}
+        variants={verticalVariants("bottom")}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: false, amount: 0.1 }}
+        exit="exit"
       >
         <div className="header-text">
           <h1
@@ -118,7 +139,7 @@ function SingleCategory() {
           alt=""
           className={`singleCategory-header-img ${isRound && "rounded"}`}
         />
-      </header>
+      </motion.header>
       <MealCard data={dataToShow} />
     </section>
   );

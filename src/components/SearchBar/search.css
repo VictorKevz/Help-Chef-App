@@ -1,59 +1,73 @@
 .search-form {
-    max-width: 600px;
-    width: 95%;
-    display: flex;
-    align-items: flex-start ;
-    position: relative;
-    margin-right: 1rem;
-    
-  }
-  .search-field{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  position: relative;
+}
+.search-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+.search-label,
+.search-input {
+  position: relative;
+  width: 100%;
+}
+.search-input {
+  height: 5.6rem;
+  background-color: inherit;
+  border-radius: 1.2rem;
+  padding-left: 1.6rem;
+  font-size: 1.6rem;
+  color: var(--white);
+  border: 1px solid var(--faded-gray);
+}
 
-  }
-  .search-label,
-  .search-input {
-    position: relative;
-    width: 100%;
-  }
-  .search-input {
-    height: 5.6rem;
-    background-color: inherit;
-    border-radius: 1.2rem;
-    padding-left: 1.6rem;
-    font-size: 1.6rem;
-    color: var(--white);
-    border: 1px solid var(--faded-gray);
+.search-btn {
+  min-width: 5.6rem;
+  min-height: 5.6rem;
+  background-color: var(--aqua);
+  border-radius: 1.2rem;
+
+  color: var(--white);
+}
+.search-icon {
+  scale: 1.5;
+  margin-top: .5rem;
+}
+.search-text{
+  display: none;
+}
+.search-clear-btn {
+  position: absolute;
+  right: 2.5rem;
+  top: 1.5rem;
+  color: var(--white);
+  opacity: 0;
+}
+.search-clear-btn.show {
+  opacity: 1;
+}
+.light-input{
+  border-color: var(--dark-green)!important;
+}
+@media (width <=500px) {
+  .search-form {
+      flex-direction: column;
+      align-items: flex-start;
   }
   
   .search-btn {
-    width: 7rem;
-    height: 7rem;
-    background-color: var(--aqua);
-    border-radius: 50%;
-    position: absolute;
-    right: -1rem;
-    top: -1rem;
-
-    color: var(--white);
-    
-    
+      max-width: 100%;
+      width: 100%;
+      gap: .6rem;
   }
-  .search-icon {
-    scale: 1.5;
+  .search-text{
+      display: flex;
+      font-size: 2rem;
   }
-  .search-clear-btn{
-    position: absolute;
-    right: 6.5rem;
-    top: 1.4rem;
-    color: var(--white);
-    opacity: 0;
-  }
-  .search-clear-btn.show{
-    opacity: 1;
-
-  }
+}

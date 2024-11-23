@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { DataContext, ThemeAppContext } from "../../../App";
 import "./trending.css";
 import { Link } from "react-router-dom";
-import pattern from "../../../assets/images/home/pattern.svg"
+import {  motion } from "framer-motion";
+import { productCardVariants } from "../../../variants";
 
 function Trending() {
   const { mealData } = useContext(DataContext);
@@ -22,16 +23,28 @@ function Trending() {
     return className;
   };
   return (
-    <section className={`trending-wrapper wrapper ${!isDark && "light-cards-bg"}`}>
-      <h2 className={`trending-title ${!isDark && "light-text"}`}>Our Popular Categories</h2>
+    <section
+      className={`trending-wrapper wrapper ${!isDark && "light-cards-bg"}`}
+    >
+      <h2 className={`trending-title ${!isDark && "light-text"}`}>
+        Our Popular Categories
+      </h2>
       <div className={`trending-grid`}>
         {filteredData?.slice(0, 5).map((category, index) => (
-          <div
+          <motion.div
             key={category?.idCategory}
             className={`trending-card ${getClassName(index + 1)}`}
+            variants={productCardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            custom={index}
+            exit="exit"
           >
             <div className="text-section">
-              <h3 className={`trending-card-title `}>{category?.strCategory}</h3>
+              <h3 className={`trending-card-title `}>
+                {category?.strCategory}
+              </h3>
               <p className="trending-card-description">
                 {category?.strCategoryDescription
                   .split(".")
@@ -39,7 +52,10 @@ function Trending() {
                   .join(".")}
                 .
               </p>
-              <Link className="link trending" to={`/categories/${category?.strCategory}`}>
+              <Link
+                className="link trending"
+                to={`/categories/${category?.strCategory}`}
+              >
                 Learn More
               </Link>
             </div>
@@ -48,7 +64,7 @@ function Trending() {
               style={{ backgroundImage: `url(${category?.strCategoryThumb})` }}
             ></div>
             <div className="overlay"></div>
-          </div>
+          </motion.div>
         ))}
       </div>
       {/* <img src={pattern} alt="" className="trending-pattern-img " /> */}

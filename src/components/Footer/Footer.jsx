@@ -121,7 +121,7 @@ function Footer() {
             </a>
           </li>
           <li className="footer-link">
-            <a className="author" href="https://github.com/VictorKevz"
+            <a className="author" href="https://www.linkedin.com/in/victor-kuwandira/"
             target="_blank">
               <LinkedIn fontSize="large"/>
             </a>

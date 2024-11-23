@@ -9,6 +9,7 @@ import Favorites from "./pages/Favorites/Favorites";
 import DetailsPage from "./pages/Details/DetailsPage";
 import Contact from "./pages/Contact/Contact";
 import Footer from "./components/Footer/Footer";
+import SearchedRecipe from "./pages/SearchedRecipe/SearchedRecipe";
 export const ThemeAppContext = createContext();
 export const DataContext = createContext();
 
@@ -158,6 +159,7 @@ function App() {
     error: "",
     favorites: JSON.parse(localStorage.getItem("favorites")) || [],
     searchResults: [],
+    searchedRecipe:[]
   };
   const [mealData, dispatchMeal] = useReducer(mealReducer, initialData);
   //MEAL DATA DECLARATION.......................................
@@ -206,9 +208,10 @@ function App() {
       ) {
         formattedData = data.meals;
       }
-      if (key === "searchResults") {
+      if (key === "searchResults" || key === "searchedRecipe") {
         formattedData = data;
       }
+      
       dispatchMeal({
         type: "UPDATE_DATA",
         payload: { key, data: formattedData },
@@ -259,6 +262,9 @@ function App() {
             <Route path="/meals/:mealName" element={<DetailsPage />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/contact" element={<Contact />} />
+
+            <Route path="/recipe/:id" element={<SearchedRecipe />} />
+
           </Routes>
           <Footer/>
           <div className="fixed-bg"></div>

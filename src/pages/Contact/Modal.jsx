@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from "react";
+import { motion } from "framer-motion";
 import { DataContext } from "../../App";
 import checkmark from "../../assets/images/checkmark.svg";
 import { Link } from "react-router-dom";
 import { Close } from "@mui/icons-material";
+import { verticalVariants } from "../../variants";
 
 function Modal() {
   const { form, dispatchForm } = useContext(DataContext);
@@ -17,7 +19,15 @@ function Modal() {
   }, [form.showModal]);
   return (
     <section className="modal-wrapper wrapper">
-      <div className="modal-container">
+      <motion.div 
+      key={form.showModal}
+      className="modal-container"
+      variants={verticalVariants("top")}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: false, amount: 0.1 }}
+        exit="exit"
+      >
         <img src={checkmark} alt="" className="checkmark" />
         <h2 className="modal-title">Thank You!</h2>
         <p className="modal-parag">
@@ -38,7 +48,7 @@ function Modal() {
         >
           <Close fontSize="large" />
         </button>
-      </div>
+      </motion.div>
     </section>
   );
 }

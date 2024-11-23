@@ -1,4 +1,5 @@
 import React, { useContext, useMemo } from "react";
+import {  motion } from "framer-motion";
 import { DataContext, ThemeAppContext } from "../../../App";
 import MealCard from "../../../components/MealCard/MealCard";
 import "../../../styles/detailsPage.css";

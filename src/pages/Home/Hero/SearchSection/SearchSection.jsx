@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import searchImg from "../../../../assets/images/search.svg";
 import SearchBar from "../../../../components/SearchBar/SearchBar";
 import "./searchSection.css";
 import { DataContext, ThemeAppContext } from "../../../../App";
 import { Link } from "react-router-dom";
 import { Launch } from "@mui/icons-material";
+import { sideVariants } from "../../../../variants";
 
 export default function SearchSection() {
   const { fetchData, mealData } = useContext(DataContext);
@@ -32,32 +34,47 @@ export default function SearchSection() {
   }, [formattedQuery]);
   const isSearched = mealData?.searchResults?.length > 0;
   return (
-    <section className={`searchSection-wrapper ${ isSearched && "searched"} ${ isSearched && !isDark && "searched-light"}`}>
-      <div
-        className={`searchSection-inner-container ${
-          !isDark && "light-cards-bg"
-        }`}
-      >
-        <header className="searchSection-header">
-          <div className={`searchSection-text ${!isDark && "light-text"}`}>
-            <h2 className="searchSection-title">Not sure what to cook?</h2>
-            <p className="searchSection-parag">
-              With our smart search you can use ingridients to search for
-              recipes
-            </p>
-            <p className="search-instructions">
-              Please enter ingridients separated by a comma:
-              <span className="strong-text">flour, sugar, butter...</span>
-            </p>
-          </div>
-          <img
-            src={searchImg}
-            alt="Search illustration"
-            className="search-img"
+    <section
+      className={`searchSection-wrapper ${isSearched && "searched"} ${
+        isSearched && !isDark && "searched-light"
+      }`}
+    >
+      <AnimatePresence mode="wait">
+        <motion.div
+          className={`searchSection-inner-container ${
+            !isDark && "light-cards-bg"
+          }`}
+          variants={sideVariants("right")}
+          initial="initial"
+          whileInView="animate"
+          exit="exit"
+          
+          viewport={{ once: false, amount: 0.2 }}
+        >
+          <header className="searchSection-header">
+            <div className={`searchSection-text ${!isDark && "light-text"}`}>
+              <h2 className="searchSection-title">Not sure what to cook?</h2>
+              <p className="searchSection-parag">
+                With our smart search you can use ingridients to search for
+                recipes
+              </p>
+              <p className="search-instructions">
+                Please enter ingridients separated by a comma:
+                <span className="strong-text">flour, sugar, butter...</span>
+              </p>
+            </div>
+            <img
+              src={searchImg}
+              alt="Search illustration"
+              className="search-img"
+            />
+          </header>
+          <SearchBar
+            setCapturedQuery={setCapturedQuery}
+            placeholder={"Search recipes by ingredients.."}
           />
-        </header>
-        <SearchBar setCapturedQuery={setCapturedQuery} placeholder={"Search recipes by ingredients.."} />
-      </div>
+        </motion.div>
+      </AnimatePresence>
 
       {mealData?.isLoading && capturedQuery && <p>Loading Data....</p>}
       {mealData?.error && <p>Error Occured: {mealData?.error}</p>}
@@ -65,19 +82,19 @@ export default function SearchSection() {
         {mealData?.searchResults?.map((meal) => (
           <Link
             key={meal?.id}
-            to={`/search/${meal?.id}`}
+            to={`/recipe/${meal?.id}`}
             className="result-card"
           >
             <div
               className="result-bg"
               style={{ backgroundImage: `url(${meal?.image})` }}
             ></div>
-            {/* <img src={meal?.image} alt="" className="result-img" /> */}
+
             <div className="result-text">
-            <h3 className="result-title">{meal?.title}</h3>
-            <button type="button" className="result-btn">
-              <Launch className="launch-icon" fontSize="large" />
-            </button>
+              <h3 className="result-title">{meal?.title}</h3>
+              <button type="button" className="result-btn">
+                <Launch className="launch-icon" fontSize="large" />
+              </button>
             </div>
           </Link>
         ))}

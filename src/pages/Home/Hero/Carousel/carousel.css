@@ -116,9 +116,9 @@
 }
 .pattern-img {
     position: absolute;
-    z-index: -1;
+    z-index: -3;
     width: 55rem;
-    opacity: 0.08;
+    opacity: 0.05;
     transform: rotate(90deg);
     overflow:hidden !important;
   }
