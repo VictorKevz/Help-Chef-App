@@ -9,16 +9,26 @@ function AddFavoritesBtn({ meal }) {
 
   return (
     <button
-      type="button"
-      className={`favorites-btn ${isLiked && "liked"}`}
-      onClick={() => dispatchMeal({ type: "UPDATE_FAVORITES", meal })}
-    >
-      {isLiked ? (
-        <Favorite className="favorites-icon" fontSize="large" />
-      ) : (
-        <FavoriteBorder className="favorites-icon" fontSize="large" />
-      )}
-    </button>
+    type="button"
+    className={`favorites-btn ${isLiked && "liked"}`}
+    onClick={() => dispatchMeal({ type: "UPDATE_FAVORITES", meal })}
+    aria-pressed={isLiked} 
+    aria-label={isLiked ? "Remove from favorites" : "Add to favorites"} 
+  >
+    {isLiked ? (
+      <Favorite
+        className="favorites-icon"
+        fontSize="large"
+        aria-hidden="true" 
+      />
+    ) : (
+      <FavoriteBorder
+        className="favorites-icon"
+        fontSize="large"
+        aria-hidden="true" 
+      />
+    )}
+  </button>
   );
 }
 

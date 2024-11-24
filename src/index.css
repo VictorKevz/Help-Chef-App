@@ -86,7 +86,11 @@ p {
 fieldset,input {
   border: none;
 }
-input:focus,textarea:focus {
+input:focus,textarea:focus,input:hover,textarea:hover {
   outline: none;
+  border: 1px solid var(--aqua)!important;
+  cursor: pointer;
+  transition: .3s ease;
+
 }
 

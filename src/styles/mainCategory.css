@@ -104,6 +104,8 @@ background-color: #2d9a9a92;
 border-radius: 1.2rem;
 transform: scaleX(0);
 transition: .3s ease-in-out;
+top: 0;
+left: 0;
 
 }
 .main-category-card:hover:before{
@@ -121,13 +123,10 @@ transition: .3s ease-in-out;
   border: 1px solid #926b45;
 }
 .main-category-card:nth-child(4n) {
-  background-color: #265d29;
-  border: 1px solid #265d29;
+  background-color: #13564b;
+  border: 1px solid #259c88;
 }
-.main-category-card:nth-child(5n) {
-  background-color: #552b55;
-  border: 1px solid #552b55;
-}
+
 .category-img {
   width: 100%;
 }

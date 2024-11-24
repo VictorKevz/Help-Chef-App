@@ -37,21 +37,31 @@ function Dropdown({ dropDownOpen, setDropDown, setOpen }) {
         initial="initial"
         animate="animate"
         exit="exit"
+        role="menu"
+        aria-label="Category Dropdown"
       >
-        <li className="category-item">
+        <li className="category-item" role="menuitem">
           <NavLink
             to="/categories"
             className={`category-link ${!isDark && "light-text"}`}
+            aria-label="View all categories"
           >
             All
           </NavLink>
         </li>
         {mealData.categoryList.map((link) => {
           return (
-            <li key={link.strCategory} className="category-item">
+            <li
+              key={link.strCategory}
+              className="category-item"
+              role="menuitem"
+              
+            >
               <NavLink
                 to={`/categories/${link.strCategory}`}
                 className={`category-link ${!isDark && "light-text"}`}
+                aria-label={`View category: ${link.strCategory}`}
+                tabIndex={0}
               >
                 {link.strCategory}
               </NavLink>

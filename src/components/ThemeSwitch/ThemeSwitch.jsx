@@ -19,27 +19,36 @@ function ThemeSwitch() {
     
   ]);
   return (
-    <div className={`toggle-container ${!isDark && "border-light"}`}>
-      {!isDark && (
-        <LightModeIcon
-        fontSize="large"
-        className={`toggle-icon ${!isDark && "light-text"}`}
-      />
-      )}
-      <Switch
-        checked={isDark}
-        onChange={handleChange}
-        inputProps={{ "aria-label": "controlled" }}
-        className="switch"
-      />
-      {isDark && (
-        <DarkModeIcon
-        fontSize="large"
-        className={`toggle-icon ${!isDark && "light-text"}`}
-      />
-      )}
-      
-    </div>
+    <div
+  className={`toggle-container ${!isDark && "border-light"}`}
+  role="switch"
+  aria-checked={isDark}
+  aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+>
+  {!isDark && (
+    <LightModeIcon
+      fontSize="large"
+      className={`toggle-icon ${!isDark && "light-text"}`}
+      aria-hidden="true"
+    />
+  )}
+  <Switch
+    checked={isDark}
+    onChange={handleChange}
+    inputProps={{
+      "aria-label": `Toggle between light and dark mode`,
+      role: "switch",
+    }}
+    className="switch"
+  />
+  {isDark && (
+    <DarkModeIcon
+      fontSize="large"
+      className={`toggle-icon ${!isDark && "light-text"}`}
+      aria-hidden="true"
+    />
+  )}
+</div>
   );
 }
 

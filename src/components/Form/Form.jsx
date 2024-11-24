@@ -16,12 +16,10 @@ function FormCard() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-        dispatchForm({ type: "SHOW_MODAL" });
-        
+      dispatchForm({ type: "SHOW_MODAL" });
     } else {
       return;
     }
-    
   };
 
   const validate = () => {
@@ -78,7 +76,15 @@ function FormCard() {
     },
   ];
   return (
-    <form className="form-wrapper" onSubmit={handleSubmit}>
+    <form
+      className="form-wrapper"
+      onSubmit={handleSubmit}
+      aria-labelledby="form-heading"
+    >
+      <h2 id="form-heading" className="sr-only">
+        Form for submitting information
+      </h2>{" "}
+      {/* Hidden heading for screen readers */}
       {fieldsData.map((field) => {
         const isValid = form.isValid[field.name];
         return (
@@ -89,6 +95,7 @@ function FormCard() {
             >
               {field.label}
             </label>
+
             {field.type === "input" ? (
               <input
                 type="text"
@@ -100,6 +107,8 @@ function FormCard() {
                 className={`form-input ${!isDark && "light-input"} ${
                   !isValid && "error-border"
                 }`}
+                aria-invalid={!isValid ? "true" : "false"} // Adding aria-invalid for invalid inputs
+                aria-describedby={`${field.id}-error`} // Linking error message to the input
               />
             ) : (
               <div className="message-field">
@@ -113,12 +122,19 @@ function FormCard() {
                   className={`form-message ${!isDark && "light-input"} ${
                     !isValid && "error-border"
                   }`}
+                  aria-invalid={!isValid ? "true" : "false"} // Adding aria-invalid for invalid textarea
+                  aria-describedby={`${field.id}-error`} // Linking error message to textarea
                 />
               </div>
             )}
+
             {!isValid && (
-              <span className="error-message">
-                Please provide a valid {field.label.toLowerCase()}
+              <span
+                id={`${field.id}-error`}
+                className="error-message"
+                role="alert"
+              >
+                Please provide a valid {field.label.toLowerCase()}.
               </span>
             )}
           </fieldset>
@@ -129,10 +145,16 @@ function FormCard() {
           type="button"
           className={`clear-btn form-btn ${!isDark && "light-text"}`}
           onClick={() => dispatchForm({ type: "CLEAR_FORM" })}
+          aria-label="Clear the form fields" // Adding clear button description for screen readers
         >
           Clear Form
         </button>
-        <button type="submit" className="link form-btn">
+
+        <button
+          type="submit"
+          className="link form-btn"
+          aria-label="Submit the form" // Adding submit button description for screen readers
+        >
           Submit
         </button>
       </fieldset>

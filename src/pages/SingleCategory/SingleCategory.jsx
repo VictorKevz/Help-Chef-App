@@ -60,13 +60,13 @@ function SingleCategory() {
     <section
       className={`singleCategory-wrapper wrapper ${!isDark && "light-body-bg"}`}
     >
-      <motion.div 
-      className="breadcrumbs-search-wrapper"
-      variants={verticalVariants("bottom")}
-      initial="initial"
-      whileInView="animate"
-      viewport={{ once: true, amount: 0.1 }}
-      exit="exit"
+      <motion.div
+        className="breadcrumbs-search-wrapper"
+        variants={verticalVariants("bottom")}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true, amount: 0.1 }}
+        exit="exit"
       >
         <div className="breadcrumbs-wrapper single">
           {breadcrumbs.map((link) => {
@@ -78,25 +78,29 @@ function SingleCategory() {
                 className={`breadcrumb ${!isDark && "light-text"} ${
                   isCurrent && "disabled"
                 }`}
+                aria-current={isCurrent ? "page" : undefined} // Indicating current breadcrumb
               >
                 {link.text}
                 {link.id !== 3 && (
                   <ArrowForwardIos
                     className={`arrow-icon ${!isDark && "light-text"}`}
+                    aria-hidden="true" // Hiding arrow icon from screen readers
                   />
                 )}
               </Link>
             );
           })}
         </div>
+
         <div className="searchBar-wrapper">
           <SearchBar
             setCapturedQuery={setCapturedQuery}
-            placeholder={"Search recipes by name.."}
+            placeholder={"Search recipes by name..."}
+            
           />
         </div>
       </motion.div>
-      
+
       <motion.header
         className={`singleCategory-header-wrapper ${
           !isDark && "light-cards-bg"
@@ -117,16 +121,19 @@ function SingleCategory() {
             style={{
               backgroundImage: `url(${dynamicCategoryObj?.strCategoryThumb})`,
             }}
+            aria-labelledby="category-title" // Adding a labeled ID for accessibility
           >
-            {dynamicCategoryObj?.strCategory}
+            <span id="category-title">{dynamicCategoryObj?.strCategory}</span>
           </h1>
+
           <p className={`singleCategory-parag ${!isDark && "light-text"}`}>
-            {sentencesLength > 3 ? textToShow : parag}.
+            {sentencesLength > 3 ? textToShow : parag}
             {sentencesLength > 3 && (
               <button
                 type="button"
                 className="text-btn"
                 onClick={() => setLimited(!isLimited)}
+                aria-expanded={isLimited ? "false" : "true"} // Indicating state of collapsed/expanded text
               >
                 {isLimited ? "Read More..." : "Collapse"}
               </button>
@@ -136,10 +143,12 @@ function SingleCategory() {
 
         <img
           src={dynamicCategoryObj?.strCategoryThumb}
-          alt=""
+          alt={dynamicCategoryObj?.strCategory + " category"} // Descriptive alt text for the image
           className={`singleCategory-header-img ${isRound && "rounded"}`}
+          aria-hidden="true" // Hide image decoration for screen readers if it's just decorative
         />
       </motion.header>
+
       <MealCard data={dataToShow} />
     </section>
   );
