@@ -164,17 +164,23 @@ function SearchedRecipe() {
       .
       .
       */}
-        <motion.section 
-        className="ingredients-section"
-        variants={sideVariants("right")}
+        <motion.section
+          className="ingredients-section"
+          variants={sideVariants("right")}
           initial="initial"
           whileInView="animate"
           exit="exit"
           viewport={{ once: false, amount: 0.2 }}
         >
           <ul className={`measures-wrapper `}>
-            <h2 className="measures-title">Ingredients</h2>
-            <img src={checklist} alt="" className={`checklist-img `} />
+            <li>
+              {" "}
+              <h2 className="measures-title">Ingredients</h2>
+            </li>{" "}
+            <li>
+              {" "}
+              <img src={checklist} alt="" className={`checklist-img `} />
+            </li>
             {data?.extendedIngredients?.map((item, i) => (
               <li key={i} className="measure-item">
                 <span className="check-wrapper">

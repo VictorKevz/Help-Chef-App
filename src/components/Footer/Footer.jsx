@@ -45,91 +45,126 @@ function Footer() {
     { id: 4, icon: LinkedIn },
   ];
   return (
-    <section className={`footer-wrapper wrapper ${!isDark && "light-body-bg"}`}>
-      <CTA />
-      <div className={`footer-container ${!isDark && "light-text"}`}>
-        <div className="logo-address-wrapper">
-          <h2 className={`logo footer ${!isDark && "light-text"}`}>
-            Help <span className="dot"></span> Chef<span className="dot"></span>
-          </h2>
-          <span className="address">
-            <LocationCity fontSize="large" className="location-icon" />
-            38 Tutkijantie 4C, Oulu, Finland
-          </span>
-        </div>
-        <ul className="main-links-wrapper footer-links">
-          {mainLinks.map((link) => (
-            <li key={link.id} className="footer-item">
-              <Link to={link.path} className="footer-link">
-                {link.text}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <ul className="category-links-wrapper footer-links">
-          <li>
-            <h3 className="footer-link-heading">Top Categories</h3>
-          </li>
-          {filteredData?.slice(0, 4)?.map((link) => (
-            <li key={link?.idCategory} className="footer-item ">
-              <Link
-                to={`/categories/${link?.strCategory}`}
-                className="footer-link exception"
-              >
-                {link?.strCategory}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <ul className="dummy-links-wrapper footer-links">
-          {dummyLinks.map((link) => (
-            <li key={link.id} className="footer-item">
-              <Link to={link.path} className="footer-link">
-                {link.text}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <ul className="socials-links-wrapper footer-links">
-          {socialLinks.map((link) => (
-            <li key={link.id} className="footer-item">
-              <link.icon
-                to={link.path}
-                className="footer-link icon"
-                fontSize="large"
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="copyright">
-        <p className={`author ${!isDark && "light-text"}`}>
-          Designed & Developed <Favorite className="footer-heart-icon" /> by
-          <a
-            className="author-link"
-            href="https://github.com/VictorKevz"
-            target="_blank"
+    <footer className={`footer-wrapper wrapper ${!isDark && "light-body-bg"}`}>
+  <CTA />
+  <div className={`footer-container ${!isDark && "light-text"}`}>
+    <div className="logo-address-wrapper">
+      <h2 className={`logo footer ${!isDark && "light-text"}`}>
+        Help <span className="dot"></span> Chef<span className="dot"></span>
+      </h2>
+      <address className="address">
+        <LocationCity
+          fontSize="large"
+          className="location-icon"
+          aria-hidden="true"
+        />
+        38 Tutkijantie 4C, Oulu, Finland
+      </address>
+    </div>
+
+    <ul className="main-links-wrapper footer-links">
+      <li><h2 className="footer-heading">Main Links</h2></li>
+      {mainLinks.map((link) => (
+        <li key={link.id} className="footer-item">
+          <Link
+            to={link.path}
+            className="footer-link"
+            aria-label={`Navigate to ${link.text}`}
           >
-            Victor.Kevz
-          </a>
-        </p>
-        <ul className={`my-links ${!isDark && "light-text"}`}>
-          <li className="footer-link">
-            <a className="author" href="https://github.com/VictorKevz"
-            target="_blank">
-              <GitHub fontSize="large" />
-            </a>
-          </li>
-          <li className="footer-link">
-            <a className="author" href="https://www.linkedin.com/in/victor-kuwandira/"
-            target="_blank">
-              <LinkedIn fontSize="large"/>
-            </a>
-          </li>
-        </ul>
-      </div>
+            {link.text}
+          </Link>
+        </li>
+      ))}
+    </ul>
+
+    <ul className="category-links-wrapper footer-links">
+      <li><h2 className="footer-heading">Top Categories</h2></li>
+      {filteredData?.slice(0, 5)?.map((link) => (
+        <li key={link?.idCategory} className="footer-item">
+          <Link
+            to={`/categories/${link?.strCategory}`}
+            className="footer-link exception"
+            aria-label={`View recipes in ${link?.strCategory}`}
+          >
+            {link?.strCategory}
+          </Link>
+        </li>
+      ))}
+    </ul>
+
+    <ul className="dummy-links-wrapper footer-links">
+      <li><h2 className="footer-heading">Additional Links</h2></li>
       
-    </section>
+      {dummyLinks.map((link) => (
+        <li key={link.id} className="footer-item">
+          <Link
+            to={link.path}
+            className="footer-link"
+            aria-label={`Navigate to ${link.text}`}
+          >
+            {link.text}
+          </Link>
+        </li>
+      ))}
+    </ul>
+
+    <ul className="socials-links-wrapper footer-links">
+      <li><h2 className="footer-heading">Follow Us</h2></li>
+      {socialLinks.map((link) => (
+        <li key={link.id} className="footer-item">
+          <link.icon
+            to={link.path}
+            className="footer-link icon"
+            fontSize="large"
+            tabIndex="0"
+            aria-label={`Follow us on ${link.name}`}
+            title={`Follow us on ${link.name}`}
+          />
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div className="copyright">
+    <p className={`author ${!isDark && "light-text"}`}>
+      Designed & Developed
+      <Favorite className="footer-heart-icon" aria-hidden="true" /> by
+      <a
+        className="author-link"
+        href="https://github.com/VictorKevz"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visit Victor.Kevz's GitHub profile"
+      >
+        Victor.Kevz
+      </a>
+    </p>
+    <ul className={`my-links ${!isDark && "light-text"}`}>
+      <li className="footer-link">
+        <a
+          className="author"
+          href="https://github.com/VictorKevz"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit Victor.Kevz's GitHub profile on GitHub"
+        >
+          <GitHub fontSize="large" />
+        </a>
+      </li>
+      <li className="footer-link">
+        <a
+          className="author"
+          href="https://www.linkedin.com/in/victor-kuwandira/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit Victor.Kevz's LinkedIn profile"
+        >
+          <LinkedIn fontSize="large" />
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>
   );
 }
 

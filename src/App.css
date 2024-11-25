@@ -1,21 +1,27 @@
+/* Common styles.................... */
 .wrapper {
   width: 100% !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-direction: column!important;
-  /* padding-bottom: 5vh; */
+
 
 }
-.link:hover{
+button:hover,a:hover{
   opacity: 0.8!important;
   scale:1.1!important;
   transition: .3s ease-in-out;
+}
+.link{
+  font-weight: 600!important;
 }
 .searchBar-wrapper{
   max-width: 720px!important;
   width: 100%!important;
 }
+
+/* Light Mode styles.................... */
 .light-body-bg {
   background-color: var(--white)!important;
 }
@@ -27,9 +33,7 @@
   box-shadow: 0 0 2rem -1rem rgba(21, 125, 125, 0.209)!important;
 
 }
-.light-single-cards-bg {
-  background-color: #629e5a !important;
-}
+
 .light-title{
   color: rgba(0, 0, 0, 0.356)!important; 
  

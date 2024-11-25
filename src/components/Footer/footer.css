@@ -3,8 +3,7 @@
   background-color: #191818;
   min-height: 400px;
   margin-top: 40vh;
-  
-  
+   
 }
 .footer-container {
   width: 100%;
@@ -34,6 +33,10 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 1.5rem;
+}
+.footer-heading{
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 .footer-item:nth-child(1) .footer-link,
 .footer-link-heading {

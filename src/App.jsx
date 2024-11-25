@@ -112,37 +112,7 @@ const formReducer = (state, action) => {
   }
 };
 
-const searchReducer = (state, action) => {
-  switch (action.type) {
-    case "UPDATE_QUERY":
-      const { value } = action.payload;
-      return {
-        ...state,
-        query: value.toLowerCase(),
-        queryValid: true,
-      };
-    case "CAPTURE_QUERY":
-      return {
-        ...state,
-        capturedQuery: action.payload.query,
-      };
-    case "SHOW_ERROR":
-      return {
-        ...state,
-        queryValid: false,
-      };
-    case "CLEAR_SEARCH":
-      return {
-        ...state,
-        capturedQuery: "",
-        query: "",
-        queryValid: true,
-      };
 
-    default:
-      return state;
-  }
-};
 function App() {
   const [isDark, setDark] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -183,12 +153,7 @@ function App() {
   const [form, dispatchForm] = useReducer(formReducer, initialForm);
   //CONTANCT PAGE DECLARATION.......................................
 
-  const searchInitial = {
-    query: "",
-    capturedQuery: "",
-    queryValid: true,
-  };
-  const [search, dispatchSearch] = useReducer(searchReducer, searchInitial);
+
   // DYNAMIC REUSABLE FUNCTION FOR DATA FETCHING......................
   const fetchData = async (url, key) => {
     try {
@@ -246,8 +211,7 @@ function App() {
           dispatchMeal,
           form,
           dispatchForm,
-          dispatchSearch,
-          search,
+         
         }}
       >
         <main className={`outer-container `}>

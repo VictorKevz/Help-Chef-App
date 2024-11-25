@@ -48,6 +48,7 @@ function MealCard({ data }) {
           aria-labelledby={`meal-title-${meal?.idMeal}`}
         >
           <header
+          
             className={`mealCard-bg`}
             style={{ backgroundImage: `url(${meal?.strMealThumb})` }}
             aria-label={`${meal?.strMeal} thumbnail`}

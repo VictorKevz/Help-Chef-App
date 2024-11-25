@@ -1,6 +1,8 @@
 .searchedRecipe-wrapper {
   background-color: var(--dark-green);
   padding: 5vh 3.5% 12vh 3.5%;
+  overflow-x: hidden!important;
+
 }
 .detailsPage-text-wrapper.searchedRecipe {
   display: flex;
