@@ -49,7 +49,7 @@ export default function SearchSection() {
           whileInView="animate"
           exit="exit"
           
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           <header className="searchSection-header">
             <div className={`searchSection-text ${!isDark && "light-text"}`}>
@@ -59,7 +59,7 @@ export default function SearchSection() {
                 recipes
               </p>
               <p className="search-instructions">
-                Please enter ingridients separated by a comma:
+                Please enter ingredients separated by a comma:
                 <span className="strong-text">flour, sugar, butter...</span>
               </p>
             </div>

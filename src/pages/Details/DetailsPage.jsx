@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import "../../styles/detailsPage.css";
 import { DataContext, ThemeAppContext } from "../../App";
 import { Link, useParams } from "react-router-dom";
-import {  motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import {
   ArrowForwardIos,
@@ -41,38 +41,40 @@ function DetailsPage() {
     fetchData(url, "singleMealData");
   }, [mealName]);
   return (
-    <section className={`detailsPage-wrapper wrapper ${!isDark && "light-body-bg"}`}>
+    <section
+      className={`detailsPage-wrapper wrapper ${!isDark && "light-body-bg"}`}
+    >
       <div className="like-breadcrumbs-wrapper">
-      <div className="breadcrumbs-wrapper details">
-        {breadcrumbs.map((link) => {
-          const isCurrent = link.id === 3;
-          return (
-            <Link
-              key={link.id}
-              to={link.path}
-              className={`breadcrumb ${!isDark && "light-text"} ${
-                isCurrent && "disabled"
-              }`}
-            >
-              {link.text}
-              {link.id !== 3 && (
-                <ArrowForwardIos
-                  className={`arrow-icon ${!isDark && "light-text"}`}
-                />
-              )}
-            </Link>
-          );
-        })}
+        <div className="breadcrumbs-wrapper details">
+          {breadcrumbs.map((link) => {
+            const isCurrent = link.id === 3;
+            return (
+              <Link
+                key={link.id}
+                to={link.path}
+                className={`breadcrumb ${!isDark && "light-text"} ${
+                  isCurrent && "disabled"
+                }`}
+              >
+                {link.text}
+                {link.id !== 3 && (
+                  <ArrowForwardIos
+                    className={`arrow-icon ${!isDark && "light-text"}`}
+                  />
+                )}
+              </Link>
+            );
+          })}
+        </div>
+        <AddFavoritesBtn meal={dataObj} />
       </div>
-      <AddFavoritesBtn meal={dataObj}/>
-      </div>
-      <motion.header 
-      className="detailsPage-header"
-      variants={sideVariants("left")}
-      initial="initial"
-      whileInView="animate"
-      exit="exit"
-      viewport={{ once: false, amount: 0.2 }}
+      <motion.header
+        className="detailsPage-header"
+        variants={sideVariants("left")}
+        initial="initial"
+        whileInView="animate"
+        exit="exit"
+        viewport={{ once: true, amount: 0.2 }}
       >
         <div className="detailsPage-text-wrapper">
           <p className="category">{dataObj?.strCategory}</p>
@@ -127,29 +129,29 @@ function DetailsPage() {
         )}
       </ul>
       <section className="detailsPage-content-wrapper">
-        <motion.aside 
-        className="left-side"
-        variants={sideVariants("left")}
-        initial="initial"
-        whileInView="animate"
-        exit="exit"
-        
-        viewport={{ once: false, amount: 0.2 }}
+        <motion.aside
+          className="left-side"
+          variants={sideVariants("left")}
+          initial="initial"
+          whileInView="animate"
+          exit="exit"
+          viewport={{ once: true, amount: 0.2 }}
         >
           <Instructions data={dataObj} />
         </motion.aside>
-        <motion.aside 
-        className="right-side"
-        variants={sideVariants("right")}
-        initial="initial"
-        whileInView="animate"
-        exit="exit"
+        <motion.aside
+          className="right-side"
+          variants={sideVariants("right")}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.2 }}
+          exit="exit"
         >
           <Measures data={dataObj} />
           <YoutubeVideo url={dataObj?.strYoutube} />
         </motion.aside>
       </section>
-      <RelatedMeal mealName={mealName}/>
+      <RelatedMeal mealName={mealName} />
       {/* <img src={pattern} alt="" className="pattern-img details" /> */}
     </section>
   );

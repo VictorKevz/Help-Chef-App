@@ -54,7 +54,7 @@ function SearchedRecipe() {
         initial="initial"
         whileInView="animate"
         exit="exit"
-        viewport={{ once: false, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.2 }}
       >
         <div className="detailsPage-text-wrapper searchedRecipe">
           <ul className="dish-wrapper">
@@ -125,7 +125,7 @@ function SearchedRecipe() {
           initial="initial"
           whileInView="animate"
           exit="exit"
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           <header className={`instructions-header `}>
             <h2 className="step-title">Instructions</h2>
@@ -170,7 +170,7 @@ function SearchedRecipe() {
           initial="initial"
           whileInView="animate"
           exit="exit"
-          viewport={{ once: false, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           <ul className={`measures-wrapper `}>
             <li>

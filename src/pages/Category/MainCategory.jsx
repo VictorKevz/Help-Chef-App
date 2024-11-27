@@ -34,7 +34,7 @@ function MainCategory() {
         variants={verticalVariants("bottom")}
         initial="initial"
         whileInView="animate"
-        viewport={{ once: false, amount: 0.1 }}
+        viewport={{ once: true, amount: 0.1 }}
         exit="exit"
       >
         <div className="mainCategoryText">

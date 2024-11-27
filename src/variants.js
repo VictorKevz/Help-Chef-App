@@ -11,7 +11,7 @@ export const carouselVariants = (direction) => ( {
   },
   exit: {
     opacity: 0,
-    x: direction === "left" ? 30 : -30,
+    x: direction === "left" ? 20 : -20,
     transition: { duration: 0.3, type: "tween", ease: "easeInOut" },
   },
 });

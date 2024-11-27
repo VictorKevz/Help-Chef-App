@@ -20,7 +20,7 @@ function Contact() {
         variants={verticalVariants("top")}
         initial="initial"
         whileInView="animate"
-        viewport={{ once: false, amount: 0.1 }}
+        viewport={{ once: true, amount: 0.1 }}
         exit="exit"
       >
         <div className="contact-info-wrapper">
@@ -47,7 +47,7 @@ function Contact() {
           variants={sideVariants("left")}
           initial="initial"
           whileInView="animate"
-          viewport={{ once: false, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.1 }}
           exit="exit"
           >
             <h2 className="form-title">Contact Us!</h2>

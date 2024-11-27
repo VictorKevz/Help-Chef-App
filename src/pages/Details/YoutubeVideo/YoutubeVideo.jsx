@@ -1,6 +1,6 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import "../measuresYoutube.css"
+import "../measuresYoutube.css";
 import { verticalVariants } from "../../../variants";
 function YoutubeVideo({ url }) {
   const convertToEmbedUrl = (originalUrl) => {
@@ -11,13 +11,15 @@ function YoutubeVideo({ url }) {
   const embedUrl = convertToEmbedUrl(url);
 
   return (
-    <motion.div  
-    className="yt-video-wrapper"
-    variants={verticalVariants("bottom")}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: false, amount: 0.1 }}
-          exit="exit"
+    
+    <motion.div
+      className="yt-video-wrapper"
+      variants={verticalVariants("bottom")}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true, amount: 0.1 }}
+      exit="exit"
+      key={embedUrl}
     >
       <iframe
         width="100%"
@@ -25,7 +27,6 @@ function YoutubeVideo({ url }) {
         src={embedUrl}
         title="YouTube video player"
         className="iframe"
-        
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       ></iframe>

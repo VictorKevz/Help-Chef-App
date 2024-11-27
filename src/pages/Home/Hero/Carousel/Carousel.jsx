@@ -6,8 +6,7 @@ import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { carouselData } from "./carouselData";
 import { ThemeAppContext } from "../../../../App";
 import { carouselVariants } from "../../../../variants";
-import pattern from "../../../../assets/images/home/hero/pattern.svg"
-
+import pattern from "../../../../assets/images/home/hero/pattern.svg";
 
 function Carousel() {
   const { isDark } = useContext(ThemeAppContext);
@@ -15,29 +14,31 @@ function Carousel() {
   const [index, setIndex] = useState(2);
   const { heading, tagline, cta, textBg, imgBg } = carouselData[index];
 
-  const nextSlide = () => {
-    setIndex((prevIndex) =>
-      prevIndex === carouselData.length - 1 ? 0 : prevIndex + 1
-    );
-    setDirection("right");
-  };
-  const prevSlide = () => {
-    setIndex((prevIndex) =>
-      prevIndex === 0 ? carouselData.length - 1 : prevIndex - 1
-    );
-    setDirection("left");
-  };
+  // const nextSlide = () => {
+  //   setIndex((prevIndex) =>
+  //     prevIndex === carouselData.length - 1 ? 0 : prevIndex + 1
+  //   );
+  //   setDirection("right");
+  // };
+  // const prevSlide = () => {
+  //   setIndex((prevIndex) =>
+  //     prevIndex === 0 ? carouselData.length - 1 : prevIndex - 1
+  //   );
+  //   setDirection("left");
+  // };
   return (
-    <AnimatePresence mode="wait">
-      <motion.section
-        className={`carousel-wrapper wrapper ${!isDark && "light-cards-bg"}`}
-        variants={carouselVariants(direction)}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        key={index}
-      >
-        <motion.div className="carousel-container">
+    <motion.section
+      className={`carousel-wrapper wrapper ${!isDark && "light-cards-bg"}`}
+    >
+      <AnimatePresence mode="wait">
+        <motion.div
+          className="carousel-container"
+          variants={carouselVariants(direction)}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          key={index}
+        >
           <div
             className="text-wrapper"
             style={{ backgroundImage: `url(${textBg})` }}
@@ -53,7 +54,7 @@ function Carousel() {
             className="image-wrapper"
             style={{ backgroundImage: `url(${imgBg})` }}
           ></div>
-          <button
+          {/* <button
             type="button"
             className={`control-btn prev ${!isDark && "light-text"}`}
             onClick={prevSlide}
@@ -69,27 +70,30 @@ function Carousel() {
             onClick={nextSlide}
           >
             <ArrowForwardIos fontSize="large" className="carousel-icon" />
-          </button>
+          </button> */}
         </motion.div>
-        <div className="pages-wrapper">
-          {carouselData.map((page) => {
-            const isActive = index === page.id;
-            return (
-              <button
-                key={page.id}
-                type="button"
-                className={`page-num ${isActive && "current"}`}
-                onClick={() => setIndex(page.id)}
-              >
-                {page.id + 1}
-              </button>
-            );
-          })}
-        </div>
-        <img src={pattern} alt="" className="pattern-img top" />
-        <img src={pattern} alt="" className="pattern-img bottom" />
-      </motion.section>
-    </AnimatePresence>
+      </AnimatePresence>
+      <div className="pages-wrapper">
+        {carouselData.map((page) => {
+          const isActive = index === page.id;
+          return (
+            <button
+              key={page.id}
+              type="button"
+              className={`page-num ${isActive && "current"}`}
+              onClick={() => {
+                setIndex(page.id);
+                setDirection(index % 2 === 0 ? "left" : "right");
+              }}
+            >
+              {page.id + 1}
+            </button>
+          );
+        })}
+      </div>
+      <img src={pattern} alt="" className="pattern-img top" />
+      <img src={pattern} alt="" className="pattern-img bottom" />
+    </motion.section>
   );
 }
 

@@ -48,11 +48,11 @@ const mealReducer = (state, action) => {
           favorites: [...state.favorites, { ...action.meal }],
         };
       }
-    case"CLEAR_RESULTS":
-    return{
-      ...state,
-      searchResults:[]
-    }  
+    case "CLEAR_RESULTS":
+      return {
+        ...state,
+        searchResults: [],
+      };
     default:
       return state;
   }
@@ -112,7 +112,6 @@ const formReducer = (state, action) => {
   }
 };
 
-
 function App() {
   const [isDark, setDark] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -129,7 +128,7 @@ function App() {
     error: "",
     favorites: JSON.parse(localStorage.getItem("favorites")) || [],
     searchResults: [],
-    searchedRecipe:[]
+    searchedRecipe: [],
   };
   const [mealData, dispatchMeal] = useReducer(mealReducer, initialData);
   //MEAL DATA DECLARATION.......................................
@@ -153,7 +152,6 @@ function App() {
   const [form, dispatchForm] = useReducer(formReducer, initialForm);
   //CONTANCT PAGE DECLARATION.......................................
 
-
   // DYNAMIC REUSABLE FUNCTION FOR DATA FETCHING......................
   const fetchData = async (url, key) => {
     try {
@@ -176,7 +174,7 @@ function App() {
       if (key === "searchResults" || key === "searchedRecipe") {
         formattedData = data;
       }
-      
+
       dispatchMeal({
         type: "UPDATE_DATA",
         payload: { key, data: formattedData },
@@ -211,7 +209,6 @@ function App() {
           dispatchMeal,
           form,
           dispatchForm,
-         
         }}
       >
         <main className={`outer-container `}>
@@ -228,11 +225,11 @@ function App() {
             <Route path="/contact" element={<Contact />} />
 
             <Route path="/recipe/:id" element={<SearchedRecipe />} />
-
           </Routes>
-          <Footer/>
-          <div className="fixed-bg"></div>
-
+          <Footer />
+          <div className="fixed-bg">
+            <div className="inner-fixed-bg"></div>
+          </div>
         </main>
       </DataContext.Provider>
     </ThemeAppContext.Provider>
